@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Daily Drop — Arkadaş daveti / Friend invite</title>
+<style>
+:root{--bg:#fbf7f0;--ink:#2b211c;--muted:#6f6258;--card:#fffdf9;--line:#e8dccb;--accent:#3f6fd8;--accent-ink:#fff}
+@media (prefers-color-scheme:dark){:root{--bg:#171310;--ink:#f1e9de;--muted:#b3a698;--card:#211c17;--line:#3a322a;--accent:#7d9ef0;--accent-ink:#10141f}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+main{max-width:480px;margin:0 auto;padding:40px 16px 64px;text-align:center}
+h1{font-size:26px;margin:0 0 8px}
+p{margin:0 0 16px;color:var(--muted)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px 16px;margin:24px 0}
+.code{font:700 40px/1.2 ui-monospace,"SF Mono",Menlo,monospace;letter-spacing:.18em;margin:8px 0 4px;word-break:break-all}
+button,.store{display:block;width:100%;border:0;border-radius:14px;padding:16px;font:600 18px/1.2 inherit;cursor:pointer;text-decoration:none;margin-top:12px}
+button{background:var(--accent);color:var(--accent-ink)}
+.store{background:transparent;color:var(--accent);border:1px solid var(--line)}
+.done{color:var(--accent);font-weight:600;min-height:1.5em;margin-top:12px}
+.missing .code,.missing button{display:none}
+</style>
+</head>
+<body>
+<main id="page">
+<h1 id="title"></h1>
+<p id="lead"></p>
+<div class="card">
+<div id="codeLabel"></div>
+<div class="code" id="code"></div>
+<button type="button" id="go"></button>
+<div class="done" id="done" aria-live="polite"></div>
+</div>
+<a class="store" id="android" href="https://play.google.com/store/apps/details?id=com.mtafasahin.dailydrop&referrer=utm_source%3Dinvite%26utm_medium%3Dfriend">Google Play</a>
+<a class="store" id="ios" href="https://apps.apple.com/app/id6823277086?ct=invite">App Store</a>
+</main>
+<script>
+// Daily Drop 21: a friend's invite. The game reads the copied text from the clipboard the first time the player opens
+// "Arkadaşlar" (DAILYDROP-XXXXXX), so the code survives the store install. Code alphabet: Crockford base32.
+(function () {
+  var TEXT = {
+    tr: { title: "Arkadaş ligine davet", lead: "Bir arkadaşın seni Daily Drop'ta günlük skorlarını karşılaştırmaya çağırıyor.",
+          label: "Davet kodu", go: "Kodu kopyala ve oyunu aç", done: "Kod kopyalandı. Oyunda Arkadaşlar'ı açınca hazır gelecek.",
+          missing: "Bu davet linkinde kod yok. Arkadaşından kodu yeniden iste." },
+    en: { title: "Join the friend league", lead: "A friend invites you to compare daily scores in Daily Drop.",
+          label: "Invite code", go: "Copy the code and open the game", done: "Code copied. It will be ready when you open Friends in the game.",
+          missing: "This invite link has no code. Ask your friend for the code again." }
+  };
+  var lang = (navigator.language || "en").toLowerCase().indexOf("tr") === 0 ? "tr" : "en";
+  var t = TEXT[lang];
+  document.documentElement.lang = lang;
+  var raw = new URLSearchParams(location.search).get("c") || "";
+  var code = raw.toUpperCase().replace(/[^0-9A-Z]/g, "");
+  var valid = /^[0-9ABCDEFGHJKMNPQRSTVWXYZ]{6}$/.test(code);
+  var ua = navigator.userAgent || "";
+  var isIos = /iPhone|iPad|iPod/.test(ua) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+  var isAndroid = /Android/.test(ua);
+  var android = document.getElementById("android");
+  var ios = document.getElementById("ios");
+  if (isIos) { android.style.display = "none"; }
+  if (isAndroid) { ios.style.display = "none"; }
+  document.getElementById("title").textContent = t.title;
+  document.getElementById("lead").textContent = valid ? t.lead : t.missing;
+  document.getElementById("codeLabel").textContent = valid ? t.label : "";
+  document.getElementById("code").textContent = code;
+  var go = document.getElementById("go");
+  go.textContent = t.go;
+  if (!valid) { document.getElementById("page").classList.add("missing"); return; }
+  var payload = "DAILYDROP-" + code;
+  function copyFallback() {
+    var area = document.createElement("textarea");
+    area.value = payload; area.setAttribute("readonly", ""); area.style.position = "fixed"; area.style.opacity = "0";
+    document.body.appendChild(area); area.select();
+    try { document.execCommand("copy"); } catch (e) {}
+    document.body.removeChild(area);
+  }
+  go.addEventListener("click", function () {
+    var copied = navigator.clipboard && navigator.clipboard.writeText ? navigator.clipboard.writeText(payload) : Promise.reject();
+    copied.catch(copyFallback).then(function () {
+      document.getElementById("done").textContent = t.done;
+      var store = isIos ? ios.href : isAndroid ? android.href : null;
+      if (store) { setTimeout(function () { location.href = store; }, 600); }
+    });
+  });
+})();
+</script>
+</body>
+</html>

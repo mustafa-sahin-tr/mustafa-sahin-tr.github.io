@@ -1,0 +1,52 @@
+# Sürüm panosu (surumler/): status/collect.py ile status.json'u yeniden üretir; veri değiştiyse commit'ler, Pages yayınlar.
+# 6 saatte bir koşar; sürüm ya da paket tag'inden sonra elle tetiklenir:
+#   gh workflow run status.yml -R mustafa-sahin-tr/mustafa-sahin-tr.github.io
+# GitHub'ın Linux makinesinde ~1 dk; artifact yüklemez (Actions depolama kotası harcanmaz).
+name: Sürüm panosu
+
+on:
+  schedule:
+    - cron: "17 */6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: status
+  cancel-in-progress: false
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Bağımlılıklar
+        run: pip install --quiet cryptography google-auth requests
+
+      - name: status.json üret
+        env:
+          GH_TOKEN: ${{ secrets.STATUS_GH_TOKEN }}
+          ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
+          ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
+          ASC_PRIVATE_KEY: ${{ secrets.ASC_PRIVATE_KEY }}
+          PLAY_SERVICE_ACCOUNT_JSON: ${{ secrets.PLAY_SERVICE_ACCOUNT_JSON }}
+        run: python3 status/collect.py
+
+      - name: Değiştiyse commit'le
+        run: |
+          if git diff --quiet surumler/status.json; then
+            echo "Veri değişmedi."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add surumler/status.json
+          git commit -m "Sürüm panosu: status.json güncellendi"
+          git push

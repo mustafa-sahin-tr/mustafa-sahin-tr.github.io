@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Sürüm Panosu</title>
+<style>
+/* Layout: tek sütun; üstte paket şeridi, sonra oyun kartları (mağaza hatları), en altta paket × oyun matrisi */
+:root{
+  --bg:#fbf7f0; --surface:#fffdf9; --fg:#2b211c; --muted:#7a6a5f; --line:#eadfd1;
+  --accent:#e8793a; --accent-soft:#fbe6d8;
+  --ok:#2f7d4f; --ok-soft:#dcefe2; --warn:#a36400; --warn-soft:#f8ebcc; --info:#3c5f9e; --info-soft:#e0e8f6; --off:#b3a597;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#171310; --surface:#211b17; --fg:#f1e9de; --muted:#a89889; --line:#3a2f28;
+  --accent:#f08a4f; --accent-soft:#3d2618;
+  --ok:#6cc48f; --ok-soft:#1d3326; --warn:#e3a94a; --warn-soft:#3a2c12; --info:#8fb0ea; --info-soft:#1d2840; --off:#6b5d52; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#171310; --surface:#211b17; --fg:#f1e9de; --muted:#a89889; --line:#3a2f28;
+  --accent:#f08a4f; --accent-soft:#3d2618;
+  --ok:#6cc48f; --ok-soft:#1d3326; --warn:#e3a94a; --warn-soft:#3a2c12; --info:#8fb0ea; --info-soft:#1d2840; --off:#6b5d52; color-scheme:dark}
+body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.55 var(--sans)}
+main{max-width:980px;margin:0 auto;padding-block:36px 56px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:36px}
+main>*{min-width:0}
+a{color:var(--accent)}
+h1{font-size:28px;line-height:1.2;margin:0;text-wrap:balance}
+h2{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 12px;font-weight:600}
+.v{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:13px}
+.mock{display:inline-block;background:var(--accent-soft);color:var(--accent);font-size:12px;font-weight:600;padding:2px 8px;border-radius:99px;margin-left:8px;vertical-align:middle}
+header p{margin:6px 0 0;color:var(--muted)}
+
+.pkgs{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
+.pkg{border:1px solid var(--line);border-radius:10px;padding:12px 14px;background:var(--surface);display:grid;gap:2px}
+.pkg b{font-size:14px}
+.pkg .v{font-size:18px;color:var(--accent)}
+.pkg small{color:var(--muted)}
+
+.legend{display:flex;flex-wrap:wrap;gap:8px 16px;color:var(--muted);font-size:13px;margin-bottom:14px}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.dot{width:9px;height:9px;border-radius:50%;display:inline-block;flex:none}
+
+.games{display:grid;gap:14px}
+.game{border:1px solid var(--line);border-radius:12px;background:var(--surface);overflow:hidden}
+.ghead{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 14px;padding:14px 16px;border-bottom:1px solid var(--line)}
+.ghead h3{margin:0;font-size:18px}
+.ghead .meta{color:var(--muted);font-size:13px;display:flex;flex-wrap:wrap;gap:4px 12px}
+.ghead .pins{margin-left:auto;display:flex;flex-wrap:wrap;gap:6px}
+.pin{font-family:var(--mono);font-size:12px;padding:2px 8px;border-radius:6px;background:var(--ok-soft);color:var(--ok)}
+.pin.behind{background:var(--warn-soft);color:var(--warn)}
+.lanes{display:grid;grid-template-columns:1fr 1fr}
+.lane{padding:12px 16px;min-width:0}
+.lane+.lane{border-left:1px solid var(--line)}
+.lane h4{margin:0 0 8px;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.track{display:grid;grid-template-columns:110px 1fr;gap:8px;align-items:center;padding:5px 0}
+.track+.track{border-top:1px dashed var(--line)}
+.track .name{color:var(--muted);font-size:13px}
+.state{display:flex;flex-wrap:wrap;align-items:center;gap:6px 8px;min-width:0}
+.chip{font-size:12px;font-weight:600;padding:1px 8px;border-radius:99px;white-space:nowrap}
+.c-live{background:var(--ok-soft);color:var(--ok)}
+.c-review{background:var(--warn-soft);color:var(--warn)}
+.c-test{background:var(--info-soft);color:var(--info)}
+.none{color:var(--off);font-size:13px}
+.when{color:var(--muted);font-size:12px}
+.game.planned .ghead{border-bottom:0}
+.game.planned{background:transparent;border-style:dashed}
+
+.matrix{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:560px}
+th,td{padding:10px 14px;text-align:left;border-bottom:1px solid var(--line);white-space:nowrap}
+tr:last-child td{border-bottom:0}
+th{font-size:12px;color:var(--muted);font-weight:600;letter-spacing:.04em}
+th small{display:block;font-weight:400;font-family:var(--mono)}
+td.behind{color:var(--warn)}
+td.behind::after{content:" ↓";font-size:11px}
+td.na{color:var(--off)}
+
+.alerts{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.alerts li{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;align-items:baseline;padding:10px 14px;border-radius:10px;background:var(--surface);border:1px solid var(--line)}
+.alerts li.hi{border-color:var(--warn);background:var(--warn-soft)}
+.alerts .who{font-weight:600}
+.alerts .what{min-width:0}
+.alerts .rule{grid-column:2;color:var(--muted);font-size:12px}
+@media (max-width:640px){.alerts li{grid-template-columns:1fr}.alerts .rule{grid-column:1}}
+footer{color:var(--muted);font-size:13px;border-top:1px solid var(--line);padding-top:16px}
+@media (max-width:640px){
+  .lanes{grid-template-columns:1fr}
+  .lane+.lane{border-left:0;border-top:1px solid var(--line)}
+  .ghead .pins{margin-left:0}
+  .track{grid-template-columns:96px 1fr}
+}
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>Sürüm panosu</h1>
+    <p id="stamp"></p>
+  </header>
+
+  <section>
+    <h2>Dikkat</h2>
+    <ul class="alerts" id="alerts"></ul>
+  </section>
+
+  <section>
+    <h2>Ortak paketler · son sürüm</h2>
+    <div class="pkgs" id="pkgs"></div>
+  </section>
+
+  <section>
+    <h2>Oyunlar · mağaza hatları</h2>
+    <div class="legend">
+      <span><i class="dot" style="background:var(--ok)"></i>Canlı</span>
+      <span><i class="dot" style="background:var(--warn)"></i>İncelemede</span>
+      <span><i class="dot" style="background:var(--info)"></i>Test (kapalı, dahili, TestFlight)</span>
+      <span><i class="dot" style="background:var(--warn-soft);outline:1px solid var(--warn)"></i>Paket son sürümün gerisinde</span>
+    </div>
+    <div class="games" id="games"></div>
+  </section>
+
+  <section>
+    <h2>Paket × oyun</h2>
+    <div class="matrix"><table id="matrix"></table></div>
+  </section>
+
+  <footer>
+    Bu sayfa <span class="v">status.json</span>'dan çizilir. Dosyayı bir GitHub Action 6 saatte bir ve her sürümden sonra yeniden üretir (<span class="v">status/collect.py</span>):
+    paket sürümleri oyun repolarındaki <span class="v">Packages/manifest.json</span>'dan, mağaza hatları App Store Connect ve Google Play API'lerinden okunur.
+    Yeni oyun eklemek için <span class="v">status/games.json</span>'a bir satır yazmak yeterli.
+  </footer>
+</main>
+
+<script>
+const REVIEW_LABELS = {
+  WAITING_FOR_REVIEW: "bekliyor", IN_REVIEW: "inceleniyor", PENDING_DEVELOPER_RELEASE: "onaylandı, yayın bekliyor",
+  PENDING_APPLE_RELEASE: "onaylandı", PROCESSING_FOR_APP_STORE: "işleniyor", REJECTED: "reddedildi",
+  METADATA_REJECTED: "metin reddedildi", INVALID_BINARY: "geçersiz build"
+};
+const REJECTED = ["REJECTED", "METADATA_REJECTED", "INVALID_BINARY"];
+const TESTFLIGHT_STALE_DAYS = 60;
+
+const el = (tag, cls, html) => { const n = document.createElement(tag); if (cls) n.className = cls; if (html != null) n.innerHTML = html; return n; };
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const cmp = (a, b) => {
+  const x = String(a).split(/[.-]/).map(Number), y = String(b).split(/[.-]/).map(Number);
+  for (let i = 0; i < 3; i++) { if ((x[i] || 0) !== (y[i] || 0)) return (x[i] || 0) - (y[i] || 0); }
+  return 0;
+};
+const fmtDate = d => d ? new Date(d).toLocaleDateString("tr-TR", { day: "numeric", month: "short" }) : "";
+const daysSince = d => Math.floor((Date.now() - new Date(d)) / 86400000);
+const shortName = g => g.name.split(":")[0];
+
+function render(status) {
+  const latest = Object.fromEntries(status.packages.map(p => [p.id, p.latest]));
+  const behind = (id, v) => latest[id] && /^\d/.test(v) && cmp(v, latest[id]) < 0;
+  const real = status.games.filter(g => !g.planned);
+
+  document.getElementById("stamp").textContent = "Veri son değişti: " +
+    new Date(status.generatedAt).toLocaleString("tr-TR", { day: "numeric", month: "long", hour: "2-digit", minute: "2-digit" }) +
+    " · 6 saatte bir kontrol edilir · App Store Connect, Google Play ve oyun repoları";
+
+  // Dikkat kuralları: her biri bir oyuna bakar, sorun varsa bir ya da birkaç satır döner. Yeni kural = yeni fonksiyon.
+  const RULES = [
+    g => g.ios?.review && REJECTED.includes(g.ios.review.state)
+      ? { hi: true, what: `App Store ${esc(g.ios.review.version)}: ${REVIEW_LABELS[g.ios.review.state]}.`, rule: "Ret" } : null,
+    g => g.android?.production && g.ios && !g.ios.live
+      ? { hi: true, what: `Android'de ${esc(g.android.production.version)} canlı, App Store'da satışta sürüm yok${g.ios.review ? ` (${esc(g.ios.review.version)} ${REVIEW_LABELS[g.ios.review.state]})` : ""}.`, rule: "Platformlar arası fark" } : null,
+    g => g.ios?.live && !g.android?.production && g.android !== undefined
+      ? { hi: true, what: `App Store'da ${esc(g.ios.live.version)} satışta, Play'de canlı sürüm yok.`, rule: "Platformlar arası fark" } : null,
+    g => g.android?.production && g.ios?.live && cmp(g.android.production.version, g.ios.live.version) !== 0
+      ? { what: `Canlı sürümler farklı: Android ${esc(g.android.production.version)}, iOS ${esc(g.ios.live.version)}.`, rule: "Platformlar arası fark" } : null,
+    g => g.android?.internal && g.android?.closed && +g.android.internal.code < +g.android.closed.code
+      ? { what: `Dahili test build ${esc(g.android.internal.code)}, kapalı testin (${esc(g.android.closed.code)}) gerisinde.`, rule: "Eski test hattı" } : null,
+    g => g.ios?.testflight && !g.ios.live && daysSince(g.ios.testflight.date) > TESTFLIGHT_STALE_DAYS
+      ? { what: `Son TestFlight build'i ${daysSince(g.ios.testflight.date)} gün önce yüklendi.`, rule: "Eski test hattı" } : null,
+    g => Object.entries(g.pins).filter(([id, v]) => behind(id, v)).map(([id, v]) =>
+      ({ what: `${esc(id)} ${esc(v)} kullanıyor, son sürüm ${esc(latest[id])}.`, rule: "Paket geride" })),
+    g => !g.android && !g.ios ? { what: "İki mağazada da kaydı yok.", rule: "Mağazada değil" } : null,
+    g => !g.pins.cozycore ? { what: "Cozy Core kullanmıyor.", rule: "Ortak çekirdek dışında" } : null
+  ];
+  const alerts = document.getElementById("alerts");
+  const rows = real.flatMap(g => RULES.flatMap(r => [r(g)].flat()).filter(Boolean).map(a => ({ ...a, g })));
+  rows.sort((a, b) => (b.hi ? 1 : 0) - (a.hi ? 1 : 0));
+  rows.forEach(a => alerts.append(el("li", a.hi ? "hi" : "",
+    `<span class="who">${esc(shortName(a.g))}</span><span class="what">${a.what}</span><span class="rule">${a.rule}</span>`)));
+  if (!rows.length) alerts.append(el("li", "", `<span class="who">Her şey yolunda</span><span class="what">Kurallara takılan durum yok.</span>`));
+
+  const pkgs = document.getElementById("pkgs");
+  status.packages.forEach(p => {
+    const users = real.filter(g => g.pins[p.id]).length;
+    const late = real.filter(g => g.pins[p.id] && behind(p.id, g.pins[p.id])).length;
+    pkgs.append(el("div", "pkg", `<b>${esc(p.name)}</b><span class="v">${esc(p.latest)}</span>
+      <small>${users} oyun kullanıyor${late ? ` · <span style="color:var(--warn)">${late} geride</span>` : ""}</small>`));
+  });
+
+  const play = (t, chip, label) => t
+    ? `<span class="chip ${chip}">${label}</span><span class="v">${esc(t.version)} (${esc(t.code)})</span>${t.rollout ? `<span class="when">%${Math.round(t.rollout * 100)} dağıtım</span>` : ""}`
+    : `<span class="none">yok</span>`;
+
+  const games = document.getElementById("games");
+  status.games.forEach(g => {
+    const card = el("article", "game" + (g.planned ? " planned" : ""));
+    const pins = Object.entries(g.pins).map(([id, v]) =>
+      `<span class="pin${behind(id, v) ? " behind" : ""}" title="son: ${esc(latest[id] ?? "?")}">${esc(id)} ${esc(v)}</span>`).join("");
+    const project = g.project ? `<span>proje ${esc(g.project.version)} (${esc(g.project.androidCode)})</span>` : "";
+    card.append(el("div", "ghead", `<h3>${esc(g.name)}</h3>
+      <span class="meta">${g.planned ? "<span>Planlandı</span>" : `<span class="v">${esc(g.bundle ?? "")}</span>${project}`}<span>${esc(g.repo)}</span></span>
+      <span class="pins">${pins}</span>`));
+    if (!g.planned) {
+      const a = g.android, i = g.ios, lanes = el("div", "lanes");
+      lanes.append(el("div", "lane", `<h4>Google Play</h4>` + (a ? `
+        <div class="track"><span class="name">Canlı</span><span class="state">${play(a.production, "c-live", "production")}</span></div>
+        ${a.open ? `<div class="track"><span class="name">Açık test</span><span class="state">${play(a.open, "c-test", "beta")}</span></div>` : ""}
+        <div class="track"><span class="name">Kapalı test</span><span class="state">${play(a.closed, "c-test", "alpha")}</span></div>
+        <div class="track"><span class="name">Dahili test</span><span class="state">${play(a.internal, "c-test", "internal")}</span></div>`
+        : `<span class="none">Play Console'da uygulama yok</span>`)));
+      lanes.append(el("div", "lane", `<h4>App Store</h4>` + (i ? `
+        <div class="track"><span class="name">Canlı</span><span class="state">${i.live ? `<span class="chip c-live">satışta</span><span class="v">${esc(i.live.version)}</span>` : `<span class="none">yok</span>`}</span></div>
+        <div class="track"><span class="name">İncelemede</span><span class="state">${i.review ? `<span class="chip ${REJECTED.includes(i.review.state) ? "c-review" : "c-review"}">${REVIEW_LABELS[i.review.state] ?? esc(i.review.state)}</span><span class="v">${esc(i.review.version)}</span>` : `<span class="none">yok</span>`}</span></div>
+        <div class="track"><span class="name">TestFlight</span><span class="state">${i.testflight ? `<span class="chip c-test">build</span><span class="v">${esc(i.testflight.version)} (${esc(i.testflight.build)})</span><span class="when">${fmtDate(i.testflight.date)}</span>` : `<span class="none">yok</span>`}</span></div>`
+        : `<span class="none">App Store Connect'te uygulama yok</span>`)));
+      card.append(lanes);
+    }
+    games.append(card);
+  });
+
+  const table = document.getElementById("matrix");
+  table.innerHTML = `<thead><tr><th>Oyun</th>${status.packages.map(p => `<th>${esc(p.name)}<small>son ${esc(p.latest)}</small></th>`).join("")}</tr></thead>`;
+  const body = el("tbody");
+  real.forEach(g => body.append(el("tr", null, `<td>${esc(shortName(g))}</td>` + status.packages.map(p => {
+    const v = g.pins[p.id];
+    return v ? `<td class="v${behind(p.id, v) ? " behind" : ""}">${esc(v)}</td>` : `<td class="na">—</td>`;
+  }).join(""))));
+  table.append(body);
+}
+
+fetch("status.json", { cache: "no-store" })
+  .then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
+  .then(render)
+  .catch(e => { document.getElementById("stamp").textContent = "status.json okunamadı (" + e.message + ")."; });
+</script>
+</body>
+</html>

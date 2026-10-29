@@ -1,0 +1,180 @@
+{
+ "generatedAt": "2026-10-29T08:27:46+00:00",
+ "packages": [
+  {
+   "id": "cozycore",
+   "name": "Cozy Core",
+   "latest": "0.31.0"
+  },
+  {
+   "id": "mobileservices",
+   "name": "Mobile Services",
+   "latest": "1.6.0"
+  },
+  {
+   "id": "reactive",
+   "name": "Reactive",
+   "latest": "1.1.2"
+  },
+  {
+   "id": "mergephysics",
+   "name": "Merge Physics",
+   "latest": "0.1.0"
+  }
+ ],
+ "games": [
+  {
+   "name": "Blockio: Time Rush",
+   "repo": "MustyBlockBlast",
+   "planned": false,
+   "pins": {
+    "cozycore": "0.31.0",
+    "mobileservices": "1.6.0",
+    "reactive": "1.1.2"
+   },
+   "project": {
+    "version": "1.14",
+    "androidCode": "36"
+   },
+   "bundle": "com.mtafasahin.blockiotimerush",
+   "android": {
+    "production": {
+     "version": "1.14",
+     "code": "36",
+     "rollout": null
+    },
+    "open": null,
+    "closed": {
+     "version": "1.14",
+     "code": "35",
+     "rollout": null
+    },
+    "internal": {
+     "version": "1.14",
+     "code": "36",
+     "rollout": null
+    }
+   },
+   "ios": {
+    "live": null,
+    "review": {
+     "version": "1.13",
+     "state": "WAITING_FOR_REVIEW"
+    },
+    "testflight": {
+     "version": "1.14",
+     "build": "36",
+     "date": "2026-10-28",
+     "expired": false
+    }
+   }
+  },
+  {
+   "name": "Daily Drop: Merge to the Moon",
+   "repo": "MustyDailyDrop",
+   "planned": false,
+   "pins": {
+    "cozycore": "0.28.0",
+    "mergephysics": "0.1.0",
+    "mobileservices": "1.6.0",
+    "reactive": "1.1.2"
+   },
+   "project": {
+    "version": "1.0",
+    "androidCode": "1"
+   },
+   "bundle": "com.mtafasahin.dailydrop",
+   "android": {
+    "production": null,
+    "open": null,
+    "closed": {
+     "version": "1.0",
+     "code": "270",
+     "rollout": null
+    },
+    "internal": {
+     "version": "1.0",
+     "code": "179",
+     "rollout": null
+    }
+   },
+   "ios": {
+    "live": null,
+    "review": {
+     "version": "1.0",
+     "state": "WAITING_FOR_REVIEW"
+    },
+    "testflight": {
+     "version": "1.0",
+     "build": "270",
+     "date": "2026-10-23",
+     "expired": false
+    }
+   }
+  },
+  {
+   "name": "Shoo! Paper Arrow Puzzle",
+   "repo": "tap-away",
+   "planned": false,
+   "pins": {
+    "cozycore": "0.28.2",
+    "mobileservices": "1.6.0",
+    "reactive": "1.1.2"
+   },
+   "project": {
+    "version": "1.0",
+    "androidCode": "5"
+   },
+   "bundle": "com.mtafasahin.tapaway",
+   "android": {
+    "production": null,
+    "open": null,
+    "closed": {
+     "version": "1.0",
+     "code": "5",
+     "rollout": null
+    },
+    "internal": {
+     "version": "1.0",
+     "code": "5",
+     "rollout": null
+    }
+   },
+   "ios": {
+    "live": null,
+    "review": {
+     "version": "1.0",
+     "state": "WAITING_FOR_REVIEW"
+    },
+    "testflight": {
+     "version": "1.0",
+     "build": "13",
+     "date": "2026-10-27",
+     "expired": false
+    }
+   }
+  },
+  {
+   "name": "Sudoku: Time Rush",
+   "repo": "sudoku",
+   "planned": false,
+   "pins": {
+    "mobileservices": "1.1.2",
+    "reactive": "1.1.2"
+   },
+   "project": {
+    "version": "1.0.0",
+    "androidCode": "1"
+   },
+   "bundle": "com.mtafasahin.sudokutimerush",
+   "android": null,
+   "ios": null
+  },
+  {
+   "name": "Aile Yapbozu",
+   "repo": "MustyAileYapbozu",
+   "planned": true,
+   "pins": {}
+  }
+ ]
+}

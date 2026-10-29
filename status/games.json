@@ -1,0 +1,17 @@
+{
+  "owner": "mustafa-sahin-tr",
+  "packagesRepo": "mtafasahin-unity-packages",
+  "packages": [
+    { "id": "cozycore", "name": "Cozy Core" },
+    { "id": "mobileservices", "name": "Mobile Services" },
+    { "id": "reactive", "name": "Reactive" },
+    { "id": "mergephysics", "name": "Merge Physics" }
+  ],
+  "games": [
+    { "name": "Blockio: Time Rush", "repo": "MustyBlockBlast", "bundle": "com.mtafasahin.blockiotimerush" },
+    { "name": "Daily Drop: Merge to the Moon", "repo": "MustyDailyDrop", "bundle": "com.mtafasahin.dailydrop" },
+    { "name": "Shoo! Paper Arrow Puzzle", "repo": "tap-away", "bundle": "com.mtafasahin.tapaway" },
+    { "name": "Sudoku: Time Rush", "repo": "sudoku", "bundle": "com.mtafasahin.sudokutimerush" },
+    { "name": "Aile Yapbozu", "repo": "MustyAileYapbozu", "planned": true }
+  ]
+}

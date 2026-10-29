@@ -37,6 +37,7 @@ PLAY = "https://androidpublisher.googleapis.com/androidpublisher/v3/applications
 REVIEW_STATES = {"WAITING_FOR_REVIEW", "IN_REVIEW", "PENDING_DEVELOPER_RELEASE", "PENDING_APPLE_RELEASE",
                  "PROCESSING_FOR_APP_STORE", "REJECTED", "METADATA_REJECTED", "INVALID_BINARY"}
 LIVE_STATES = {"READY_FOR_SALE", "READY_FOR_DISTRIBUTION"}
+SUBMISSION_OPEN_STATES = {"WAITING_FOR_REVIEW", "IN_REVIEW", "UNRESOLVED_ISSUES", "COMPLETING"}
 PLAY_TRACKS = {"production": "production", "beta": "open", "alpha": "closed", "internal": "internal"}
 
 
@@ -114,7 +115,14 @@ class AppStoreConnect:
             if state in LIVE_STATES and live is None:
                 live = {"version": attributes["versionString"], "date": (attributes.get("createdDate") or "")[:10]}
             elif state in REVIEW_STATES and review is None and live is None:
-                review = {"version": attributes["versionString"], "state": state}
+                review = {"version": attributes["versionString"], "state": state,
+                          "release": attributes.get("releaseType"), "submitted": None}
+        if review:
+            # The open submission's date = when it went to Apple; resubmissions after a rejection reset it.
+            submissions = self.get(f"reviewSubmissions?filter[app]={app_id}&filter[platform]=IOS&limit=10")["data"]
+            dates = [s["attributes"].get("submittedDate") for s in submissions
+                     if s["attributes"].get("state") in SUBMISSION_OPEN_STATES]
+            review["submitted"] = max((d for d in dates if d), default=None)
         builds = self.get(f"builds?filter[app]={app_id}&sort=-uploadedDate&limit=1&include=preReleaseVersion")
         testflight = None
         if builds["data"]:

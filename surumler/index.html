@@ -64,6 +64,7 @@ header p{margin:6px 0 0;color:var(--muted)}
 .c-test{background:var(--info-soft);color:var(--info)}
 .none{color:var(--off);font-size:13px}
 .when{color:var(--muted);font-size:12px}
+.when.sub{flex-basis:100%}
 .game.planned .ghead{border-bottom:0}
 .game.planned{background:transparent;border-style:dashed}
 
@@ -141,6 +142,8 @@ const REVIEW_LABELS = {
 };
 const REJECTED = ["REJECTED", "METADATA_REJECTED", "INVALID_BINARY"];
 const TESTFLIGHT_STALE_DAYS = 60;
+const REVIEW_SLOW_DAYS = 3;  // Apple genelde 1–2 günde bakar
+const RELEASE_LABELS = { MANUAL: "onaydan sonra elle yayın", AFTER_APPROVAL: "onaylanınca otomatik yayın", SCHEDULED: "tarihli yayın" };
 
 const el = (tag, cls, html) => { const n = document.createElement(tag); if (cls) n.className = cls; if (html != null) n.innerHTML = html; return n; };
 const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
@@ -164,6 +167,10 @@ function render(status) {
 
   // Dikkat kuralları: her biri bir oyuna bakar, sorun varsa bir ya da birkaç satır döner. Yeni kural = yeni fonksiyon.
   const RULES = [
+    g => g.ios?.review?.state === "PENDING_DEVELOPER_RELEASE"
+      ? { hi: true, what: `App Store ${esc(g.ios.review.version)} onaylandı, yayınlaman bekleniyor (App Store Connect › Release This Version).`, rule: "Senden bekliyor" } : null,
+    g => g.ios?.review?.submitted && ["WAITING_FOR_REVIEW", "IN_REVIEW"].includes(g.ios.review.state) && daysSince(g.ios.review.submitted) >= REVIEW_SLOW_DAYS
+      ? { hi: true, what: `App Store ${esc(g.ios.review.version)} ${daysSince(g.ios.review.submitted)} gündür ${REVIEW_LABELS[g.ios.review.state]} (gönderim ${fmtDate(g.ios.review.submitted)}).`, rule: "Uzun inceleme" } : null,
     g => g.ios?.review && REJECTED.includes(g.ios.review.state)
       ? { hi: true, what: `App Store ${esc(g.ios.review.version)}: ${REVIEW_LABELS[g.ios.review.state]}.`, rule: "Ret" } : null,
     g => g.android?.production && g.ios && !g.ios.live
@@ -200,6 +207,10 @@ function render(status) {
     ? `<span class="chip ${chip}">${label}</span><span class="v">${esc(t.version)} (${esc(t.code)})</span>${t.rollout ? `<span class="when">%${Math.round(t.rollout * 100)} dağıtım</span>` : ""}`
     : `<span class="none">yok</span>`;
 
+  const reviewCell = r => `<span class="chip c-review">${REVIEW_LABELS[r.state] ?? esc(r.state)}</span><span class="v">${esc(r.version)}</span>` +
+    (r.submitted ? `<span class="when">${fmtDate(r.submitted)}'den beri · ${daysSince(r.submitted)} gün</span>` : "") +
+    (r.release ? `<span class="when sub">${RELEASE_LABELS[r.release] ?? esc(r.release)}</span>` : "");
+
   const games = document.getElementById("games");
   status.games.forEach(g => {
     const card = el("article", "game" + (g.planned ? " planned" : ""));
@@ -219,7 +230,7 @@ function render(status) {
         : `<span class="none">Play Console'da uygulama yok</span>`)));
       lanes.append(el("div", "lane", `<h4>App Store</h4>` + (i ? `
         <div class="track"><span class="name">Canlı</span><span class="state">${i.live ? `<span class="chip c-live">satışta</span><span class="v">${esc(i.live.version)}</span>` : `<span class="none">yok</span>`}</span></div>
-        <div class="track"><span class="name">İncelemede</span><span class="state">${i.review ? `<span class="chip ${REJECTED.includes(i.review.state) ? "c-review" : "c-review"}">${REVIEW_LABELS[i.review.state] ?? esc(i.review.state)}</span><span class="v">${esc(i.review.version)}</span>` : `<span class="none">yok</span>`}</span></div>
+        <div class="track"><span class="name">İncelemede</span><span class="state">${i.review ? reviewCell(i.review) : `<span class="none">yok</span>`}</span></div>
         <div class="track"><span class="name">TestFlight</span><span class="state">${i.testflight ? `<span class="chip c-test">build</span><span class="v">${esc(i.testflight.version)} (${esc(i.testflight.build)})</span><span class="when">${fmtDate(i.testflight.date)}</span>` : `<span class="none">yok</span>`}</span></div>`
         : `<span class="none">App Store Connect'te uygulama yok</span>`)));
       card.append(lanes);

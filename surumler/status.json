@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-29T08:27:46+00:00",
+ "generatedAt": "2026-10-29T09:08:18+00:00",
  "packages": [
   {
    "id": "cozycore",
@@ -59,7 +59,9 @@
     "live": null,
     "review": {
      "version": "1.13",
-     "state": "WAITING_FOR_REVIEW"
+     "state": "WAITING_FOR_REVIEW",
+     "release": "MANUAL",
+     "submitted": "2026-10-25T11:10:17.815Z"
     },
     "testflight": {
      "version": "1.14",
@@ -102,7 +104,9 @@
     "live": null,
     "review": {
      "version": "1.0",
-     "state": "WAITING_FOR_REVIEW"
+     "state": "WAITING_FOR_REVIEW",
+     "release": "MANUAL",
+     "submitted": "2026-10-24T06:56:13.747Z"
     },
     "testflight": {
      "version": "1.0",
@@ -144,7 +148,9 @@
     "live": null,
     "review": {
      "version": "1.0",
-     "state": "WAITING_FOR_REVIEW"
+     "state": "WAITING_FOR_REVIEW",
+     "release": "AFTER_APPROVAL",
+     "submitted": "2026-10-27T16:23:59.269Z"
     },
     "testflight": {
      "version": "1.0",

@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-29T18:29:29+00:00",
+ "generatedAt": "2026-10-30T05:50:59+00:00",
  "packages": [
   {
    "id": "cozycore",
@@ -165,7 +165,8 @@
    "repo": "sudoku",
    "planned": false,
    "pins": {
-    "mobileservices": "1.1.2",
+    "cozycore": "0.31.0",
+    "mobileservices": "1.6.0",
     "reactive": "1.1.2"
    },
    "project": {

@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-30T08:59:23+00:00",
+ "generatedAt": "2026-10-30T12:57:14+00:00",
  "packages": [
   {
    "id": "cozycore",
@@ -174,7 +174,12 @@
     "androidCode": "1"
    },
    "bundle": "com.mtafasahin.sudokutimerush",
-   "android": null,
+   "android": {
+    "production": null,
+    "open": null,
+    "closed": null,
+    "internal": null
+   },
    "ios": null
   },
   {

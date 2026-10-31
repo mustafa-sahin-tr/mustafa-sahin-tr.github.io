@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-31T11:30:49+00:00",
+ "generatedAt": "2026-10-31T12:20:46+00:00",
  "packages": [
   {
    "id": "cozycore",
@@ -28,7 +28,7 @@
    "repo": "MustyBlockBlast",
    "planned": false,
    "pins": {
-    "cozycore": "0.31.1",
+    "cozycore": "0.31.2",
     "mobileservices": "1.6.0",
     "reactive": "1.1.2"
    },
@@ -65,8 +65,8 @@
     },
     "testflight": {
      "version": "1.14.1",
-     "build": "37",
-     "date": "2026-10-29",
+     "build": "38",
+     "date": "2026-10-31",
      "expired": false
     }
    }

@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-31T18:39:54+00:00",
+ "generatedAt": "2026-10-31T21:03:26+00:00",
  "packages": [
   {
    "id": "cozycore",
@@ -110,8 +110,8 @@
     },
     "testflight": {
      "version": "1.0",
-     "build": "270",
-     "date": "2026-10-23",
+     "build": "283",
+     "date": "2026-10-31",
      "expired": false
     }
    }
@@ -121,13 +121,13 @@
    "repo": "tap-away",
    "planned": false,
    "pins": {
-    "cozycore": "0.28.2",
+    "cozycore": "0.35.0",
     "mobileservices": "1.6.0",
     "reactive": "1.1.2"
    },
    "project": {
     "version": "1.0",
-    "androidCode": "5"
+    "androidCode": "6"
    },
    "bundle": "com.mtafasahin.tapaway",
    "android": {
@@ -135,12 +135,12 @@
     "open": null,
     "closed": {
      "version": "1.0",
-     "code": "5",
+     "code": "6",
      "rollout": null
     },
     "internal": {
      "version": "1.0",
-     "code": "5",
+     "code": "6",
      "rollout": null
     }
    },
@@ -154,8 +154,8 @@
     },
     "testflight": {
      "version": "1.0",
-     "build": "13",
-     "date": "2026-10-27",
+     "build": "14",
+     "date": "2026-10-31",
      "expired": false
     }
    }

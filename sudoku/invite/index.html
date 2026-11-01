@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Sudoku: Time Rush — Davet / Invite</title>
+<style>
+:root{--bg:#f4f6fb;--ink:#141a2b;--muted:#5b6478;--card:#ffffff;--line:#dde2ee;--accent:#2f5bd3;--accent-ink:#fff}
+@media (prefers-color-scheme:dark){:root{--bg:#0f1320;--ink:#eef1f8;--muted:#a3acc2;--card:#181e2f;--line:#2b3350;--accent:#ffb020;--accent-ink:#1a1204}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+main{max-width:480px;margin:0 auto;padding:40px 16px 64px;text-align:center}
+h1{font-size:26px;margin:0 0 8px}
+p{margin:0 0 16px;color:var(--muted)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px 16px;margin:24px 0}
+.code{font:700 40px/1.2 ui-monospace,"SF Mono",Menlo,monospace;letter-spacing:.18em;margin:8px 0 4px;word-break:break-all}
+button,.store{display:block;width:100%;border:0;border-radius:14px;padding:16px;font:600 18px/1.2 inherit;cursor:pointer;text-decoration:none;margin-top:12px}
+button{background:var(--accent);color:var(--accent-ink)}
+.store{background:transparent;color:var(--accent);border:1px solid var(--line)}
+.done{color:var(--accent);font-weight:600;min-height:1.5em;margin-top:12px}
+.missing .code,.missing button{display:none}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<main id="page">
+<h1 id="title"></h1>
+<p id="lead"></p>
+<div class="card">
+<div id="codeLabel"></div>
+<div class="code" id="code"></div>
+<button type="button" id="go"></button>
+<div class="done" id="done" aria-live="polite"></div>
+</div>
+<a class="store" id="android" href="https://play.google.com/store/apps/details?id=com.mtafasahin.sudokutimerush&referrer=utm_source%3Dinvite%26utm_medium%3Dfriend">Google Play</a>
+<!-- App Store: the link (apps.apple.com/app/id…?ct=invite) is added with the first iOS release; the id does not exist yet. -->
+<a class="store" id="ios" href="" hidden>App Store</a>
+</main>
+<script>
+// Sudoku: Time Rush (#107): a friend's invite. The game reads the copied text from the clipboard the first time the
+// player opens Friends (SUDOKU-XXXXXX), so the code survives the store install. Code alphabet: Crockford base32.
+(function () {
+  var TEXT = {
+    tr: { title: "Günün Yarışı'na davet", lead: "Bir arkadaşın seni Sudoku: Time Rush'ta her gün aynı bulmacada yarışmaya çağırıyor.",
+          label: "Arkadaş kodu", go: "Kodu kopyala ve oyunu aç", done: "Kod kopyalandı. Oyunda Arkadaşlar'ı açınca hazır gelecek.",
+          missing: "Bu davet linkinde kod yok. Arkadaşından kodu yeniden iste." },
+    en: { title: "Join the Daily Race", lead: "A friend invites you to race the same sudoku every day in Sudoku: Time Rush.",
+          label: "Friend code", go: "Copy the code and open the game", done: "Code copied. It will be ready when you open Friends in the game.",
+          missing: "This invite link has no code. Ask your friend for the code again." }
+  };
+  var lang = (navigator.language || "en").toLowerCase().indexOf("tr") === 0 ? "tr" : "en";
+  var t = TEXT[lang];
+  document.documentElement.lang = lang;
+  var raw = new URLSearchParams(location.search).get("c") || "";
+  var code = raw.toUpperCase().replace(/[^0-9A-Z]/g, "");
+  var valid = /^[0-9ABCDEFGHJKMNPQRSTVWXYZ]{6}$/.test(code);
+  var ua = navigator.userAgent || "";
+  var isIos = /iPhone|iPad|iPod/.test(ua) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+  var isAndroid = /Android/.test(ua);
+  var android = document.getElementById("android");
+  var ios = document.getElementById("ios");
+  var hasIos = ios.getAttribute("href") !== "";
+  if (hasIos) { ios.hidden = false; }
+  if (isIos && hasIos) { android.style.display = "none"; }
+  if (isAndroid) { ios.style.display = "none"; }
+  document.getElementById("title").textContent = t.title;
+  document.getElementById("lead").textContent = valid ? t.lead : t.missing;
+  document.getElementById("codeLabel").textContent = valid ? t.label : "";
+  document.getElementById("code").textContent = code;
+  var go = document.getElementById("go");
+  go.textContent = t.go;
+  if (!valid) { document.getElementById("page").classList.add("missing"); return; }
+  var payload = "SUDOKU-" + code;
+  function copyFallback() {
+    var area = document.createElement("textarea");
+    area.value = payload; area.setAttribute("readonly", ""); area.style.position = "fixed"; area.style.opacity = "0";
+    document.body.appendChild(area); area.select();
+    try { document.execCommand("copy"); } catch (e) {}
+    document.body.removeChild(area);
+  }
+  go.addEventListener("click", function () {
+    var copied = navigator.clipboard && navigator.clipboard.writeText ? navigator.clipboard.writeText(payload) : Promise.reject();
+    copied.catch(copyFallback).then(function () {
+      document.getElementById("done").textContent = t.done;
+      var store = isIos ? (hasIos ? ios.href : null) : isAndroid ? android.href : null;
+      if (store) { setTimeout(function () { location.href = store; }, 600); }
+    });
+  });
+})();
+</script>
+</body>
+</html>

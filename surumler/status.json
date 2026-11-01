@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-01T15:22:21+00:00",
+ "generatedAt": "2026-11-01T22:03:10+00:00",
  "packages": [
   {
    "id": "cozycore",
@@ -165,7 +165,7 @@
    "repo": "sudoku",
    "planned": false,
    "pins": {
-    "cozycore": "0.36.0",
+    "cozycore": "0.37.0",
     "mobileservices": "1.6.0",
     "reactive": "1.1.2"
    },
@@ -180,7 +180,11 @@
     "closed": null,
     "internal": null
    },
-   "ios": null
+   "ios": {
+    "live": null,
+    "review": null,
+    "testflight": null
+   }
   },
   {
    "name": "Aile Yapbozu",

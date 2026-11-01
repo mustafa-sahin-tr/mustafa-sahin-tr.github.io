@@ -38,21 +38,29 @@ button{background:var(--accent);color:var(--accent-ink)}
 <a class="store" id="ios" href="" hidden>App Store</a>
 </main>
 <script>
-// Sudoku: Time Rush (#107): a friend's invite. The game reads the copied text from the clipboard the first time the
-// player opens Friends (SUDOKU-XXXXXX), so the code survives the store install. Code alphabet: Crockford base32.
+// Sudoku: Time Rush (#107): a friend's invite (?c=). The game reads the copied text from the clipboard the first time
+// the player opens Friends (SUDOKU-XXXXXX), so the code survives the store install. #108: a circle's invite (?k=) copies
+// SUDOKU-C-XXXXXX, which the Circles screen reads when it opens and offers to join. Code alphabet: Crockford base32.
 (function () {
   var TEXT = {
     tr: { title: "Günün Yarışı'na davet", lead: "Bir arkadaşın seni Sudoku: Time Rush'ta her gün aynı bulmacada yarışmaya çağırıyor.",
           label: "Arkadaş kodu", go: "Kodu kopyala ve oyunu aç", done: "Kod kopyalandı. Oyunda Arkadaşlar'ı açınca hazır gelecek.",
-          missing: "Bu davet linkinde kod yok. Arkadaşından kodu yeniden iste." },
+          missing: "Bu davet linkinde kod yok. Arkadaşından kodu yeniden iste.",
+          circleTitle: "Çembere davet", circleLead: "Bir arkadaşın seni Sudoku: Time Rush'ta çemberine çağırıyor: her gün aynı bulmaca, yalnız çemberin sıralaması.",
+          circleLabel: "Çember kodu", circleDone: "Kod kopyalandı. Oyunda Çemberler'i açınca katılmak isteyip istemediğin sorulacak." },
     en: { title: "Join the Daily Race", lead: "A friend invites you to race the same sudoku every day in Sudoku: Time Rush.",
           label: "Friend code", go: "Copy the code and open the game", done: "Code copied. It will be ready when you open Friends in the game.",
-          missing: "This invite link has no code. Ask your friend for the code again." }
+          missing: "This invite link has no code. Ask your friend for the code again.",
+          circleTitle: "Join a circle", circleLead: "A friend invites you to their circle in Sudoku: Time Rush: the same puzzle every day, a ranking of your own.",
+          circleLabel: "Circle code", circleDone: "Code copied. Open Circles in the game and you'll be asked to join." }
   };
   var lang = (navigator.language || "en").toLowerCase().indexOf("tr") === 0 ? "tr" : "en";
   var t = TEXT[lang];
   document.documentElement.lang = lang;
-  var raw = new URLSearchParams(location.search).get("c") || "";
+  var query = new URLSearchParams(location.search);
+  var isCircle = !query.get("c") && !!query.get("k");
+  var raw = (isCircle ? query.get("k") : query.get("c")) || "";
+  if (isCircle) { t.title = t.circleTitle; t.lead = t.circleLead; t.label = t.circleLabel; t.done = t.circleDone; }
   var code = raw.toUpperCase().replace(/[^0-9A-Z]/g, "");
   var valid = /^[0-9ABCDEFGHJKMNPQRSTVWXYZ]{6}$/.test(code);
   var ua = navigator.userAgent || "";
@@ -71,7 +79,7 @@ button{background:var(--accent);color:var(--accent-ink)}
   var go = document.getElementById("go");
   go.textContent = t.go;
   if (!valid) { document.getElementById("page").classList.add("missing"); return; }
-  var payload = "SUDOKU-" + code;
+  var payload = (isCircle ? "SUDOKU-C-" : "SUDOKU-") + code;
   function copyFallback() {
     var area = document.createElement("textarea");
     area.value = payload; area.setAttribute("readonly", ""); area.style.position = "fixed"; area.style.opacity = "0";

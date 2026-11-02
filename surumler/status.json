@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-02T08:04:47+00:00",
+ "generatedAt": "2026-11-02T08:39:03+00:00",
  "packages": [
   {
    "id": "cozycore",
@@ -165,7 +165,7 @@
    "repo": "sudoku",
    "planned": false,
    "pins": {
-    "cozycore": "0.39.0",
+    "cozycore": "0.40.0",
     "mobileservices": "1.6.0",
     "reactive": "1.1.2"
    },
@@ -180,7 +180,7 @@
     "closed": null,
     "internal": {
      "version": "android",
-     "code": "198",
+     "code": "204",
      "rollout": null
     }
    },
@@ -189,8 +189,8 @@
     "review": null,
     "testflight": {
      "version": "1.0.0",
-     "build": "198",
-     "date": "2026-11-01",
+     "build": "204",
+     "date": "2026-11-02",
      "expired": false
     }
    }

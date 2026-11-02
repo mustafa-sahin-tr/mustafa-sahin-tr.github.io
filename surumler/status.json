@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-01T22:03:10+00:00",
+ "generatedAt": "2026-11-02T05:30:57+00:00",
  "packages": [
   {
    "id": "cozycore",
@@ -178,12 +178,21 @@
     "production": null,
     "open": null,
     "closed": null,
-    "internal": null
+    "internal": {
+     "version": "android",
+     "code": "198",
+     "rollout": null
+    }
    },
    "ios": {
     "live": null,
     "review": null,
-    "testflight": null
+    "testflight": {
+     "version": "1.0.0",
+     "build": "198",
+     "date": "2026-11-01",
+     "expired": false
+    }
    }
   },
   {

@@ -5,7 +5,8 @@
     { "id": "cozycore", "name": "Cozy Core" },
     { "id": "mobileservices", "name": "Mobile Services" },
     { "id": "reactive", "name": "Reactive" },
-    { "id": "mergephysics", "name": "Merge Physics" }
+    { "id": "mergephysics", "name": "Merge Physics" },
+    { "id": "gridpuzzle", "name": "Grid Kit" }
   ],
   "games": [
     { "name": "Blockio: Time Rush", "repo": "MustyBlockBlast", "bundle": "com.mtafasahin.blockiotimerush" },

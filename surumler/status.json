@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-03T18:46:05+00:00",
+ "generatedAt": "2026-11-03T22:13:43+00:00",
  "packages": [
   {
    "id": "cozycore",
@@ -110,7 +110,7 @@
     },
     "testflight": {
      "version": "1.0",
-     "build": "298",
+     "build": "300",
      "date": "2026-11-03",
      "expired": false
     }

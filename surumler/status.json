@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-03T13:48:02+00:00",
+ "generatedAt": "2026-11-03T14:16:28+00:00",
  "packages": [
   {
    "id": "cozycore",
@@ -76,7 +76,7 @@
    "repo": "MustyDailyDrop",
    "planned": false,
    "pins": {
-    "cozycore": "0.42.1",
+    "cozycore": "0.43.0",
     "mergephysics": "0.1.0",
     "mobileservices": "1.6.0",
     "reactive": "1.1.2"

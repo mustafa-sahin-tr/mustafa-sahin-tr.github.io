@@ -1,10 +1,10 @@
 {
- "generatedAt": "2026-11-03T16:52:59+00:00",
+ "generatedAt": "2026-11-03T18:46:05+00:00",
  "packages": [
   {
    "id": "cozycore",
    "name": "Cozy Core",
-   "latest": "0.43.1"
+   "latest": "0.43.2"
   },
   {
    "id": "mobileservices",
@@ -76,7 +76,7 @@
    "repo": "MustyDailyDrop",
    "planned": false,
    "pins": {
-    "cozycore": "0.43.0",
+    "cozycore": "0.43.2",
     "mergephysics": "0.1.0",
     "mobileservices": "1.6.0",
     "reactive": "1.1.2"
@@ -91,7 +91,7 @@
     "open": null,
     "closed": {
      "version": "1.0",
-     "code": "298",
+     "code": "300",
      "rollout": null
     },
     "internal": {

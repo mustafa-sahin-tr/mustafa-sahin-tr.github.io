@@ -1,10 +1,10 @@
 {
- "generatedAt": "2026-11-03T16:16:13+00:00",
+ "generatedAt": "2026-11-03T16:52:59+00:00",
  "packages": [
   {
    "id": "cozycore",
    "name": "Cozy Core",
-   "latest": "0.43.0"
+   "latest": "0.43.1"
   },
   {
    "id": "mobileservices",
@@ -110,8 +110,8 @@
     },
     "testflight": {
      "version": "1.0",
-     "build": "283",
-     "date": "2026-10-31",
+     "build": "298",
+     "date": "2026-11-03",
      "expired": false
     }
    }

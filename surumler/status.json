@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-03T22:13:43+00:00",
+ "generatedAt": "2026-11-03T23:54:10+00:00",
  "packages": [
   {
    "id": "cozycore",
@@ -19,6 +19,11 @@
   {
    "id": "mergephysics",
    "name": "Merge Physics",
+   "latest": "0.1.0"
+  },
+  {
+   "id": "gridpuzzle",
+   "name": "Grid Kit",
    "latest": "0.1.0"
   }
  ],

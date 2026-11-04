@@ -1,10 +1,10 @@
 {
- "generatedAt": "2026-11-04T12:51:05+00:00",
+ "generatedAt": "2026-11-04T13:36:15+00:00",
  "packages": [
   {
    "id": "cozycore",
    "name": "Cozy Core",
-   "latest": "0.51.2"
+   "latest": "0.52.0"
   },
   {
    "id": "mobileservices",
@@ -133,7 +133,7 @@
    },
    "project": {
     "version": "1.0",
-    "androidCode": "7"
+    "androidCode": "8"
    },
    "bundle": "com.mtafasahin.tapaway",
    "android": {
@@ -152,15 +152,10 @@
    },
    "ios": {
     "live": null,
-    "review": {
-     "version": "1.0",
-     "state": "WAITING_FOR_REVIEW",
-     "release": "MANUAL",
-     "submitted": "2026-10-27T16:23:59.269Z"
-    },
+    "review": null,
     "testflight": {
      "version": "1.0",
-     "build": "16",
+     "build": "17",
      "date": "2026-11-04",
      "expired": false
     }

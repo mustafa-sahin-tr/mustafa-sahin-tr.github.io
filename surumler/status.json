@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-04T11:53:00+00:00",
+ "generatedAt": "2026-11-04T12:41:52+00:00",
  "packages": [
   {
    "id": "cozycore",
@@ -19,7 +19,7 @@
   {
    "id": "mergephysics",
    "name": "Merge Physics",
-   "latest": "0.1.0"
+   "latest": "0.2.0"
   },
   {
    "id": "gridpuzzle",
@@ -126,7 +126,7 @@
    "repo": "tap-away",
    "planned": false,
    "pins": {
-    "cozycore": "0.43.2",
+    "cozycore": "0.51.2",
     "gridpuzzle": "0.1.0",
     "mobileservices": "1.6.0",
     "reactive": "1.1.2"

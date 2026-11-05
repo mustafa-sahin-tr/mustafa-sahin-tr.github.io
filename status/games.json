@@ -13,6 +13,7 @@
     { "name": "Daily Drop: Merge to the Moon", "repo": "MustyDailyDrop", "bundle": "com.mtafasahin.dailydrop" },
     { "name": "Shoo! Paper Arrow Puzzle", "repo": "tap-away", "bundle": "com.mtafasahin.tapaway" },
     { "name": "Sudoku: Time Rush", "repo": "sudoku", "bundle": "com.mtafasahin.sudokutimerush" },
-    { "name": "Aile Yapbozu", "repo": "MustyAileYapbozu", "planned": true }
+    { "name": "Aile Yapbozu", "repo": "MustyAileYapbozu", "planned": true },
+    { "name": "Tilt Blocks: Balance Puzzle", "repo": "MustyTerazi", "planned": true }
   ]
 }

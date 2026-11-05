@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-05T20:22:12+00:00",
+ "generatedAt": "2026-11-05T20:58:21+00:00",
  "packages": [
   {
    "id": "cozycore",
@@ -33,7 +33,7 @@
    "repo": "MustyBlockBlast",
    "planned": false,
    "pins": {
-    "cozycore": "0.31.3",
+    "cozycore": "0.56.1",
     "mobileservices": "1.6.0",
     "reactive": "1.1.2"
    },
@@ -131,7 +131,7 @@
    },
    "project": {
     "version": "1.0",
-    "androidCode": "11"
+    "androidCode": "12"
    },
    "bundle": "com.mtafasahin.tapaway",
    "android": {
@@ -139,21 +139,26 @@
     "open": null,
     "closed": {
      "version": "1.0",
-     "code": "11",
+     "code": "12",
      "rollout": null
     },
     "internal": {
      "version": "1.0",
-     "code": "11",
+     "code": "12",
      "rollout": null
     }
    },
    "ios": {
     "live": null,
-    "review": null,
+    "review": {
+     "version": "1.0",
+     "state": "WAITING_FOR_REVIEW",
+     "release": "MANUAL",
+     "submitted": "2026-11-05T20:48:03.496Z"
+    },
     "testflight": {
      "version": "1.0",
-     "build": "21",
+     "build": "22",
      "date": "2026-11-05",
      "expired": false
     }

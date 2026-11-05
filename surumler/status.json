@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-05T08:18:08+00:00",
+ "generatedAt": "2026-11-05T08:46:43+00:00",
  "packages": [
   {
    "id": "cozycore",
@@ -126,7 +126,7 @@
    "repo": "tap-away",
    "planned": false,
    "pins": {
-    "cozycore": "0.53.1",
+    "cozycore": "0.54.0",
     "gridpuzzle": "0.1.0",
     "mobileservices": "1.6.0",
     "reactive": "1.1.2"

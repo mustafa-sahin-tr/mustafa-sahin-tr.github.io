@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-05T18:55:37+00:00",
+ "generatedAt": "2026-11-05T19:26:07+00:00",
  "packages": [
   {
    "id": "cozycore",
@@ -61,13 +61,11 @@
     }
    },
    "ios": {
-    "live": null,
-    "review": {
+    "live": {
      "version": "1.14.1",
-     "state": "WAITING_FOR_REVIEW",
-     "release": "MANUAL",
-     "submitted": "2026-10-31T17:29:49.491Z"
+     "date": "2026-10-04"
     },
+    "review": null,
     "testflight": {
      "version": "1.14.1",
      "build": "41",
@@ -126,7 +124,7 @@
    "repo": "tap-away",
    "planned": false,
    "pins": {
-    "cozycore": "0.54.0",
+    "cozycore": "0.56.0",
     "gridpuzzle": "0.1.0",
     "mobileservices": "1.6.0",
     "reactive": "1.1.2"

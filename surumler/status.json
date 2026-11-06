@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-06T05:45:26+00:00",
+ "generatedAt": "2026-11-06T07:27:43+00:00",
  "packages": [
   {
    "id": "cozycore",
@@ -90,7 +90,11 @@
    },
    "bundle": "com.mtafasahin.dailydrop",
    "android": {
-    "production": null,
+    "production": {
+     "version": "1.0",
+     "code": "300",
+     "rollout": null
+    },
     "open": null,
     "closed": {
      "version": "1.0",
@@ -210,7 +214,7 @@
    "repo": "MustyTerazi",
    "planned": true,
    "pins": {
-    "cozycore": "0.55.0",
+    "cozycore": "0.56.3",
     "gridpuzzle": "0.3.0",
     "mobileservices": "1.6.0",
     "reactive": "1.1.2"

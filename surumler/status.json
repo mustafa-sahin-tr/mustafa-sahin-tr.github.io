@@ -1,10 +1,10 @@
 {
- "generatedAt": "2026-11-06T09:17:17+00:00",
+ "generatedAt": "2026-11-06T09:32:28+00:00",
  "packages": [
   {
    "id": "cozycore",
    "name": "Cozy Core",
-   "latest": "0.58.0"
+   "latest": "0.59.0"
   },
   {
    "id": "mobileservices",
@@ -38,8 +38,8 @@
     "reactive": "1.1.2"
    },
    "project": {
-    "version": "1.14.1",
-    "androidCode": "39"
+    "version": "1.15",
+    "androidCode": "40"
    },
    "bundle": "com.mtafasahin.blockiotimerush",
    "android": {

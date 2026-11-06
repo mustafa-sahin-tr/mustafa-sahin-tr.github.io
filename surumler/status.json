@@ -1,10 +1,10 @@
 {
- "generatedAt": "2026-11-06T11:21:34+00:00",
+ "generatedAt": "2026-11-06T11:46:23+00:00",
  "packages": [
   {
    "id": "cozycore",
    "name": "Cozy Core",
-   "latest": "0.60.0"
+   "latest": "0.60.1"
   },
   {
    "id": "mobileservices",

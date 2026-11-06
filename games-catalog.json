@@ -1,0 +1,40 @@
+{
+  "games": [
+    {
+      "key": "blockio",
+      "bundleId": "com.mtafasahin.blockiotimerush",
+      "name": { "tr": "Blockio", "en": "Blockio" },
+      "tagline": { "tr": "Rahatlatıcı blok bulmaca: satırları temizle, maket kur", "en": "Relaxing block puzzle: clear lines, build landmarks" },
+      "iconUrl": "https://mustafa-sahin-tr.github.io/games-catalog-icons/blockio.png",
+      "appStoreId": "6819092132",
+      "playPackage": "com.mtafasahin.blockiotimerush"
+    },
+    {
+      "key": "dailydrop",
+      "bundleId": "com.mtafasahin.dailydrop",
+      "name": { "tr": "Daily Drop", "en": "Daily Drop" },
+      "tagline": { "tr": "Herkese aynı toplar, günde tek deneme. Ay'a kadar birleştir.", "en": "Same drops for everyone, one try a day. Merge to the Moon." },
+      "iconUrl": "https://mustafa-sahin-tr.github.io/games-catalog-icons/dailydrop.png",
+      "appStoreId": "",
+      "playPackage": ""
+    },
+    {
+      "key": "tapaway",
+      "bundleId": "com.mtafasahin.tapaway",
+      "name": { "tr": "Shoo!", "en": "Shoo!" },
+      "tagline": { "tr": "Kağıt okları doğru sırayla kaydır. Sakin bir mantık bulmacası", "en": "Tap the paper arrows in the right order. A calm logic puzzle" },
+      "iconUrl": "https://mustafa-sahin-tr.github.io/games-catalog-icons/tapaway.png",
+      "appStoreId": "",
+      "playPackage": ""
+    },
+    {
+      "key": "sudoku",
+      "bundleId": "com.mtafasahin.sudokutimerush",
+      "name": { "tr": "Sudoku: Time Rush", "en": "Sudoku: Time Rush" },
+      "tagline": { "tr": "Klasik sudoku ya da geri sayımla yarış", "en": "Classic sudoku or race the countdown" },
+      "iconUrl": "https://mustafa-sahin-tr.github.io/games-catalog-icons/sudoku.png",
+      "appStoreId": "",
+      "playPackage": ""
+    }
+  ]
+}

@@ -1,10 +1,10 @@
 {
- "generatedAt": "2026-11-05T21:11:05+00:00",
+ "generatedAt": "2026-11-06T05:45:26+00:00",
  "packages": [
   {
    "id": "cozycore",
    "name": "Cozy Core",
-   "latest": "0.56.2"
+   "latest": "0.56.3"
   },
   {
    "id": "mobileservices",
@@ -107,7 +107,7 @@
     "live": null,
     "review": {
      "version": "1.0",
-     "state": "WAITING_FOR_REVIEW",
+     "state": "IN_REVIEW",
      "release": "MANUAL",
      "submitted": "2026-10-24T06:56:13.747Z"
     },
@@ -169,7 +169,7 @@
    "repo": "sudoku",
    "planned": false,
    "pins": {
-    "cozycore": "0.54.0",
+    "cozycore": "0.56.2",
     "mobileservices": "1.6.0",
     "reactive": "1.1.2"
    },

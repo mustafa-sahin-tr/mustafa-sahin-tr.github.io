@@ -30,7 +30,7 @@
     {
       "key": "sudoku",
       "bundleId": "com.mtafasahin.sudokutimerush",
-      "name": { "tr": "Sudoku: Time Rush", "en": "Sudoku: Time Rush" },
+      "name": { "tr": "Sudoku Circles", "en": "Sudoku Circles" },
       "tagline": { "tr": "Klasik sudoku ya da geri sayımla yarış", "en": "Classic sudoku or race the countdown" },
       "iconUrl": "https://mustafa-sahin-tr.github.io/games-catalog-icons/sudoku.png",
       "appStoreId": "",

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
-<title>Sudoku: Time Rush — Davet / Invite</title>
+<title>Sudoku Circles — Davet / Invite</title>
 <style>
 :root{--bg:#f4f6fb;--ink:#141a2b;--muted:#5b6478;--card:#ffffff;--line:#dde2ee;--accent:#2f5bd3;--accent-ink:#fff}
 @media (prefers-color-scheme:dark){:root{--bg:#0f1320;--ink:#eef1f8;--muted:#a3acc2;--card:#181e2f;--line:#2b3350;--accent:#ffb020;--accent-ink:#1a1204}}
@@ -38,20 +38,20 @@ button{background:var(--accent);color:var(--accent-ink)}
 <a class="store" id="ios" href="" hidden>App Store</a>
 </main>
 <script>
-// Sudoku: Time Rush (#107): a friend's invite (?c=). The game reads the copied text from the clipboard the first time
+// Sudoku Circles (#107): a friend's invite (?c=). The game reads the copied text from the clipboard the first time
 // the player opens Friends (SUDOKU-XXXXXX), so the code survives the store install. #108: a circle's invite (?k=) copies
 // SUDOKU-C-XXXXXX, which the Circles screen reads when it opens and offers to join. Code alphabet: Crockford base32.
 (function () {
   var TEXT = {
-    tr: { title: "Günün Yarışı'na davet", lead: "Bir arkadaşın seni Sudoku: Time Rush'ta her gün aynı bulmacada yarışmaya çağırıyor.",
+    tr: { title: "Günün Yarışı'na davet", lead: "Bir arkadaşın seni Sudoku Circles'ta her gün aynı bulmacada yarışmaya çağırıyor.",
           label: "Arkadaş kodu", go: "Kodu kopyala ve oyunu aç", done: "Kod kopyalandı. Oyunda Arkadaşlar'ı açınca hazır gelecek.",
           missing: "Bu davet linkinde kod yok. Arkadaşından kodu yeniden iste.",
-          circleTitle: "Çembere davet", circleLead: "Bir arkadaşın seni Sudoku: Time Rush'ta çemberine çağırıyor: her gün aynı bulmaca, yalnız çemberin sıralaması.",
+          circleTitle: "Çembere davet", circleLead: "Bir arkadaşın seni Sudoku Circles'ta çemberine çağırıyor: her gün aynı bulmaca, yalnız çemberin sıralaması.",
           circleLabel: "Çember kodu", circleDone: "Kod kopyalandı. Oyunda Çemberler'i açınca katılmak isteyip istemediğin sorulacak." },
-    en: { title: "Join the Daily Race", lead: "A friend invites you to race the same sudoku every day in Sudoku: Time Rush.",
+    en: { title: "Join the Daily Race", lead: "A friend invites you to race the same sudoku every day in Sudoku Circles.",
           label: "Friend code", go: "Copy the code and open the game", done: "Code copied. It will be ready when you open Friends in the game.",
           missing: "This invite link has no code. Ask your friend for the code again.",
-          circleTitle: "Join a circle", circleLead: "A friend invites you to their circle in Sudoku: Time Rush: the same puzzle every day, a ranking of your own.",
+          circleTitle: "Join a circle", circleLead: "A friend invites you to their circle in Sudoku Circles: the same puzzle every day, a ranking of your own.",
           circleLabel: "Circle code", circleDone: "Code copied. Open Circles in the game and you'll be asked to join." }
   };
   var lang = (navigator.language || "en").toLowerCase().indexOf("tr") === 0 ? "tr" : "en";

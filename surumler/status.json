@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-07T19:32:07+00:00",
+ "generatedAt": "2026-11-07T20:42:01+00:00",
  "packages": [
   {
    "id": "cozycore",
@@ -197,7 +197,7 @@
     },
     "internal": {
      "version": "android",
-     "code": "207",
+     "code": "254",
      "rollout": null
     }
    },
@@ -206,7 +206,7 @@
     "review": null,
     "testflight": {
      "version": "1.0.0",
-     "build": "242",
+     "build": "254",
      "date": "2026-11-07",
      "expired": false
     }
@@ -224,7 +224,7 @@
    "planned": true,
    "pins": {
     "cozycore": "0.72.0",
-    "gridpuzzle": "0.3.0",
+    "gridpuzzle": "0.5.0",
     "mobileservices": "1.6.0",
     "reactive": "1.1.2"
    },

@@ -1,10 +1,10 @@
 {
- "generatedAt": "2026-11-07T17:18:43+00:00",
+ "generatedAt": "2026-11-07T18:31:56+00:00",
  "packages": [
   {
    "id": "cozycore",
    "name": "Cozy Core",
-   "latest": "0.72.0"
+   "latest": "0.73.0"
   },
   {
    "id": "mobileservices",
@@ -223,7 +223,7 @@
    "repo": "MustyTerazi",
    "planned": true,
    "pins": {
-    "cozycore": "0.60.0",
+    "cozycore": "0.72.0",
     "gridpuzzle": "0.3.0",
     "mobileservices": "1.6.0",
     "reactive": "1.1.2"

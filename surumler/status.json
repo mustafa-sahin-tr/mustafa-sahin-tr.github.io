@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-07T20:42:01+00:00",
+ "generatedAt": "2026-11-07T21:52:11+00:00",
  "packages": [
   {
    "id": "cozycore",
@@ -174,7 +174,7 @@
    }
   },
   {
-   "name": "Sudoku: Time Rush",
+   "name": "Sudoku Circles",
    "repo": "sudoku",
    "planned": false,
    "pins": {

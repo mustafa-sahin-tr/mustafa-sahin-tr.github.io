@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-07T11:38:51+00:00",
+ "generatedAt": "2026-11-07T11:58:58+00:00",
  "packages": [
   {
    "id": "cozycore",
@@ -178,7 +178,7 @@
    "repo": "sudoku",
    "planned": false,
    "pins": {
-    "cozycore": "0.63.0",
+    "cozycore": "0.69.0",
     "mobileservices": "1.6.0",
     "reactive": "1.1.2"
    },
@@ -206,7 +206,7 @@
     "review": null,
     "testflight": {
      "version": "1.0.0",
-     "build": "240",
+     "build": "242",
      "date": "2026-11-07",
      "expired": false
     }

@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-07T19:00:01+00:00",
+ "generatedAt": "2026-11-07T19:32:07+00:00",
  "packages": [
   {
    "id": "cozycore",
@@ -24,7 +24,7 @@
   {
    "id": "gridpuzzle",
    "name": "Grid Kit",
-   "latest": "0.4.0"
+   "latest": "0.5.0"
   }
  ],
  "games": [
@@ -178,7 +178,7 @@
    "repo": "sudoku",
    "planned": false,
    "pins": {
-    "cozycore": "0.71.0",
+    "cozycore": "0.73.1",
     "mobileservices": "1.6.0",
     "reactive": "1.1.2"
    },

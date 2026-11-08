@@ -39,6 +39,8 @@ button{background:var(--accent);color:var(--accent-ink)}
 // Daily Drop 21: a friend's invite. The game reads the copied text from the clipboard the first time the player opens
 // "Arkadaşlar" (DAILYDROP-XXXXXX), so the code survives the store install. Code alphabet: Crockford base32.
 // Daily Drop 26: ?r=CODE is a streamer's room (the streamer's friend code); the game reads DAILYDROP-ODA-XXXXXX on Home.
+// Daily Drop #208: ?k=CODE is a circle's invite; it copies DAILYDROP-C-XXXXXX, which the Circles screen reads when it
+// opens and offers to join.
 (function () {
   var TEXT = {
     tr: { title: "Arkadaş ligine davet", lead: "Bir arkadaşın seni Daily Drop'ta günlük skorlarını karşılaştırmaya çağırıyor.",
@@ -50,16 +52,24 @@ button{background:var(--accent);color:var(--accent-ink)}
     roomTr: { title: "Yayıncı odasına katıl", lead: "Yayıncıyla aynı günün sırasını oyna, skorun odanın tablosunda görünsün.",
           label: "Oda kodu", go: "Kodu kopyala ve oyunu aç", done: "Kod kopyalandı. Oyunu açınca ana ekran odaya katılmayı soracak.",
           missing: "Bu linkte oda kodu yok. Yayındaki QR'ı yeniden okut." },
+    circleTr: { title: "Çembere davet", lead: "Bir arkadaşın seni Daily Drop'ta çemberine çağırıyor: her gün aynı sıra, yalnız çemberin sıralaması.",
+          label: "Çember kodu", go: "Kodu kopyala ve oyunu aç", done: "Kod kopyalandı. Oyunda Çemberler'i açınca katılmak isteyip istemediğin sorulacak.",
+          missing: "Bu davet linkinde kod yok. Arkadaşından kodu yeniden iste." },
     roomEn: { title: "Join the streamer's room", lead: "Play the same daily order as the streamer and see your score on the room's board.",
           label: "Room code", go: "Copy the code and open the game", done: "Code copied. The home screen will ask to join the room when you open the game.",
-          missing: "This link has no room code. Scan the QR on stream again." }
+          missing: "This link has no room code. Scan the QR on stream again." },
+    circleEn: { title: "Join a circle", lead: "A friend invites you to their circle in Daily Drop: the same order every day, a ranking of your own.",
+          label: "Circle code", go: "Copy the code and open the game", done: "Code copied. Open Circles in the game and you'll be asked to join.",
+          missing: "This invite link has no code. Ask your friend for the code again." }
   };
   var lang = (navigator.language || "en").toLowerCase().indexOf("tr") === 0 ? "tr" : "en";
   var query = new URLSearchParams(location.search);
   var isRoom = query.has("r");
-  var t = isRoom ? TEXT[lang === "tr" ? "roomTr" : "roomEn"] : TEXT[lang];
+  var isCircle = !isRoom && !query.get("c") && query.has("k");
+  var t = isRoom ? TEXT[lang === "tr" ? "roomTr" : "roomEn"]
+    : isCircle ? TEXT[lang === "tr" ? "circleTr" : "circleEn"] : TEXT[lang];
   document.documentElement.lang = lang;
-  var raw = (isRoom ? query.get("r") : query.get("c")) || "";
+  var raw = (isRoom ? query.get("r") : isCircle ? query.get("k") : query.get("c")) || "";
   var code = raw.toUpperCase().replace(/[^0-9A-Z]/g, "");
   var valid = /^[0-9ABCDEFGHJKMNPQRSTVWXYZ]{6}$/.test(code);
   var ua = navigator.userAgent || "";
@@ -76,7 +86,7 @@ button{background:var(--accent);color:var(--accent-ink)}
   var go = document.getElementById("go");
   go.textContent = t.go;
   if (!valid) { document.getElementById("page").classList.add("missing"); return; }
-  var payload = (isRoom ? "DAILYDROP-ODA-" : "DAILYDROP-") + code;
+  var payload = (isRoom ? "DAILYDROP-ODA-" : isCircle ? "DAILYDROP-C-" : "DAILYDROP-") + code;
   function copyFallback() {
     var area = document.createElement("textarea");
     area.value = payload; area.setAttribute("readonly", ""); area.style.position = "fixed"; area.style.opacity = "0";

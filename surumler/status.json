@@ -1,10 +1,10 @@
 {
- "generatedAt": "2026-11-08T17:14:48+00:00",
+ "generatedAt": "2026-11-08T18:55:31+00:00",
  "packages": [
   {
    "id": "cozycore",
    "name": "Cozy Core",
-   "latest": "0.76.0"
+   "latest": "0.77.0"
   },
   {
    "id": "mobileservices",
@@ -84,7 +84,7 @@
    "repo": "MustyDailyDrop",
    "planned": false,
    "pins": {
-    "cozycore": "0.73.1",
+    "cozycore": "0.76.0",
     "mergephysics": "0.1.0",
     "mobileservices": "1.6.0",
     "reactive": "1.1.2"

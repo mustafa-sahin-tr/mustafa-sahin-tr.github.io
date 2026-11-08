@@ -1,10 +1,10 @@
 {
- "generatedAt": "2026-11-07T23:35:44+00:00",
+ "generatedAt": "2026-11-08T05:29:33+00:00",
  "packages": [
   {
    "id": "cozycore",
    "name": "Cozy Core",
-   "latest": "0.73.1"
+   "latest": "0.74.0"
   },
   {
    "id": "mobileservices",
@@ -192,7 +192,7 @@
     "open": null,
     "closed": {
      "version": "android",
-     "code": "238",
+     "code": "258",
      "rollout": null
     },
     "internal": {

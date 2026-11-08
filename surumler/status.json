@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-08T11:15:39+00:00",
+ "generatedAt": "2026-11-08T14:19:44+00:00",
  "packages": [
   {
    "id": "cozycore",
@@ -38,14 +38,14 @@
     "reactive": "1.1.2"
    },
    "project": {
-    "version": "1.15",
-    "androidCode": "40"
+    "version": "1.16",
+    "androidCode": "41"
    },
    "bundle": "com.mtafasahin.blockiotimerush",
    "android": {
     "production": {
-     "version": "1.15",
-     "code": "40",
+     "version": "1.16",
+     "code": "41",
      "rollout": null
     },
     "open": null,
@@ -55,8 +55,8 @@
      "rollout": null
     },
     "internal": {
-     "version": "1.15",
-     "code": "40",
+     "version": "1.16",
+     "code": "41",
      "rollout": null
     }
    },

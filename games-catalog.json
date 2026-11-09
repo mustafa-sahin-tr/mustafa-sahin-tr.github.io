@@ -16,7 +16,7 @@
       "tagline": { "tr": "Herkese aynı toplar, günde tek deneme. Ay'a kadar birleştir.", "en": "Same drops for everyone, one try a day. Merge to the Moon." },
       "iconUrl": "https://mustafa-sahin-tr.github.io/games-catalog-icons/dailydrop.png",
       "appStoreId": "",
-      "playPackage": ""
+      "playPackage": "com.mtafasahin.dailydrop"
     },
     {
       "key": "tapaway",

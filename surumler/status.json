@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-09T07:45:11+00:00",
+ "generatedAt": "2026-11-09T08:53:22+00:00",
  "packages": [
   {
    "id": "cozycore",
@@ -85,7 +85,7 @@
     "reactive": "1.1.2"
    },
    "project": {
-    "version": "1.0",
+    "version": "1.1",
     "androidCode": "1"
    },
    "bundle": "com.mtafasahin.dailydrop",
@@ -116,9 +116,9 @@
      "submitted": "2026-11-06T17:54:59.56Z"
     },
     "testflight": {
-     "version": "1.0",
-     "build": "300",
-     "date": "2026-11-03",
+     "version": "1.1",
+     "build": "372",
+     "date": "2026-11-09",
      "expired": false
     }
    }

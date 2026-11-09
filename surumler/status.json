@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-09T10:59:59+00:00",
+ "generatedAt": "2026-11-09T16:53:56+00:00",
  "packages": [
   {
    "id": "cozycore",
@@ -202,13 +202,11 @@
     }
    },
    "ios": {
-    "live": null,
-    "review": {
+    "live": {
      "version": "1.0.0",
-     "state": "WAITING_FOR_REVIEW",
-     "release": "MANUAL",
-     "submitted": "2026-11-08T11:14:58.366Z"
+     "date": "2026-11-01"
     },
+    "review": null,
     "testflight": {
      "version": "1.0.0",
      "build": "267",

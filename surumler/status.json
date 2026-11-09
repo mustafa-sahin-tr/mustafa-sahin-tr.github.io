@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-09T09:05:03+00:00",
+ "generatedAt": "2026-11-09T10:21:40+00:00",
  "packages": [
   {
    "id": "cozycore",
@@ -91,8 +91,8 @@
    "bundle": "com.mtafasahin.dailydrop",
    "android": {
     "production": {
-     "version": "1.0",
-     "code": "300",
+     "version": "1.1",
+     "code": "372",
      "rollout": null
     },
     "open": null,

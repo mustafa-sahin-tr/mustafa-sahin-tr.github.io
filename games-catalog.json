@@ -35,6 +35,15 @@
       "iconUrl": "https://mustafa-sahin-tr.github.io/games-catalog-icons/sudoku.png",
       "appStoreId": "6829494366",
       "playPackage": ""
+    },
+    {
+      "key": "terazi",
+      "bundleId": "com.mtafasahin.terazi",
+      "name": { "tr": "Terazi", "en": "Tilt Blocks" },
+      "tagline": { "tr": "Parçaya dokun, tahta yatsın, her şey kaysın. Altını düşürme", "en": "Tap a piece, the board tilts, everything slides. Keep the gold" },
+      "iconUrl": "https://mustafa-sahin-tr.github.io/games-catalog-icons/terazi.png",
+      "appStoreId": "",
+      "playPackage": ""
     }
   ]
 }

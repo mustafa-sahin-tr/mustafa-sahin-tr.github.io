@@ -14,15 +14,18 @@ h1{margin:0;font-size:30px}
 a{color:var(--accent)}
 .games{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
 .game{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px;display:flex;flex-direction:column;gap:10px}
-.game img{width:64px;height:64px;border-radius:15px}
+.top{display:flex;align-items:center;gap:10px}
+.game img{width:64px;height:64px;border-radius:15px;flex:none}
 .game b{font-size:17px;line-height:1.25}
 .game small{font-size:14px;line-height:1.35;color:var(--muted);flex:1 1 auto}
-.stores{display:flex;flex-wrap:wrap;gap:6px}
-.store{display:inline-flex;align-items:center;gap:5px;background:var(--badge);color:var(--badgeText);border-radius:8px;padding:5px 9px;font-size:12px;font-weight:600;line-height:1.2;text-decoration:none;white-space:nowrap}
+.stores{display:flex;flex-direction:column;gap:6px;flex:1 1 auto;min-width:0}
+.store{display:inline-flex;align-items:center;gap:5px;background:var(--badge);color:var(--badgeText);border-radius:8px;padding:5px 9px;font-size:12px;font-weight:600;line-height:1.2;text-decoration:none;white-space:nowrap;overflow:hidden}
+.store .short{display:none}
 .store svg{width:14px;height:14px;flex:none;fill:currentColor}
 .store.soon{background:transparent;color:var(--muted);border:1px dashed var(--line);font-weight:500}
 .more{font-size:14px;font-weight:600}
-@media (max-width:360px){.games{grid-template-columns:1fr}}
+@media (max-width:520px){.store .full{display:none}.store .short{display:inline}}
+@media (max-width:360px){.games{grid-template-columns:1fr}.store .full{display:inline}.store .short{display:none}}
 .policies{margin-top:32px;font-size:14px;color:var(--muted)}
 .policies ul{padding-left:20px;margin:6px 0}
 </style>
@@ -51,8 +54,8 @@ a{color:var(--accent)}
   var isAndroid = /Android/.test(ua);
   var lang = (navigator.language || "en").slice(0, 2) === "tr" ? "tr" : "en";
   var text = {
-    tr: { lead: "Kısa, sakin bulmaca oyunları. Hepsi ücretsiz.", soon: "Yakında", more: "Nasıl oynanır?", policies: "Gizlilik politikaları" },
-    en: { lead: "Short, calm puzzle games. All free.", soon: "Coming soon", more: "How to play", policies: "Privacy policies" }
+    tr: { lead: "Kısa, sakin bulmaca oyunları. Hepsi ücretsiz.", soon: "Yakında", soonShort: "Yakında", get: "İndir", more: "Nasıl oynanır?", policies: "Gizlilik politikaları" },
+    en: { lead: "Short, calm puzzle games. All free.", soon: "Coming soon", soonShort: "Soon", get: "Get", more: "How to play", policies: "Privacy policies" }
   }[lang];
   // Each game's own page: what it is, how to play, support and privacy.
   var pages = { sudoku: "sudoku/", blockio: "blockio/", dailydrop: "daily-drop/", tapaway: "tapaway/", terazi: "terazi/" };
@@ -67,8 +70,12 @@ a{color:var(--accent)}
     var badge = document.createElement(url ? "a" : "span");
     badge.className = url ? "store" : "store soon";
     badge.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="' + icons[icon] + '"/></svg>';
-    var label = document.createElement("span"); label.textContent = url ? name : text.soon; badge.appendChild(label);
-    if (url) { badge.href = url; } else { badge.setAttribute("aria-label", name + ": " + text.soon); }
+    // Next to the icon a phone has room only for a short word; the store's mark says which store it is.
+    var full = document.createElement("span"); full.className = "full"; full.textContent = url ? name : text.soon;
+    var short = document.createElement("span"); short.className = "short"; short.textContent = url ? text.get : text.soonShort;
+    badge.appendChild(full); badge.appendChild(short);
+    badge.title = url ? name : name + ": " + text.soon;
+    if (url) { badge.href = url; badge.setAttribute("aria-label", name); } else { badge.setAttribute("aria-label", name + ": " + text.soon); }
     return badge;
   }
   // Every game of the catalog, live or not: a store it is not in yet shows a quiet "Coming soon" badge. A phone lists
@@ -84,7 +91,9 @@ a{color:var(--accent)}
       var apple = store("App Store", "apple", game.appStoreId ? "https://apps.apple.com/app/id" + game.appStoreId + "?ct=site" : "");
       var play = store("Google Play", "play", game.playPackage ? "https://play.google.com/store/apps/details?id=" + game.playPackage : "");
       if (isAndroid) { stores.appendChild(play); stores.appendChild(apple); } else { stores.appendChild(apple); stores.appendChild(play); }
-      item.appendChild(icon); item.appendChild(name); item.appendChild(line); item.appendChild(stores);
+      var top = document.createElement("div"); top.className = "top";
+      top.appendChild(icon); top.appendChild(stores);
+      item.appendChild(top); item.appendChild(name); item.appendChild(line);
       if (pages[game.key]) {
         var more = document.createElement("a"); more.className = "more"; more.textContent = text.more; more.href = pages[game.key];
         item.appendChild(more);

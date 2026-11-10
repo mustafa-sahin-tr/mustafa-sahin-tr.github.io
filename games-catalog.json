@@ -31,9 +31,9 @@
       "key": "sudoku",
       "bundleId": "com.mtafasahin.sudokutimerush",
       "name": { "tr": "Sudoku Circles", "en": "Sudoku Circles" },
-      "tagline": { "tr": "Klasik sudoku ya da geri sayımla yarış", "en": "Classic sudoku or race the countdown" },
+      "tagline": { "tr": "Her gün herkese aynı sudoku: arkadaşlarınla ve çemberlerinle yarış", "en": "The same sudoku for everyone each day: race your friends and circles" },
       "iconUrl": "https://mustafa-sahin-tr.github.io/games-catalog-icons/sudoku.png",
-      "appStoreId": "",
+      "appStoreId": "6829494366",
       "playPackage": ""
     }
   ]

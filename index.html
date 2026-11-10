@@ -5,36 +5,88 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Mustafa Şahin — Games</title>
 <style>
-body{margin:0;background:#fbf7f0;color:#2b211c;font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
-@media (prefers-color-scheme:dark){body{background:#171310;color:#f1e9de}}
+:root{--bg:#fbf7f0;--fg:#2b211c;--muted:#6e5f55;--card:#fff;--line:#eadfd2;--accent:#c2500a;--badge:#2b211c;--badgeText:#fff}
+@media (prefers-color-scheme:dark){:root{--bg:#171310;--fg:#f1e9de;--muted:#b8a999;--card:#221c18;--line:#3a3029;--accent:#f0965a;--badge:#f1e9de;--badgeText:#171310}}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
 main{max-width:640px;margin:0 auto;padding:40px 16px}
-a{color:#e8793a}
+h1{margin:0;font-size:30px}
+.lead{margin:0 0 20px;color:var(--muted)}
+a{color:var(--accent)}
+.games{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:14px}
+.game{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px;display:flex;flex-direction:column;gap:12px}
+.head{display:flex;gap:12px;align-items:center}
+.head img{width:64px;height:64px;border-radius:15px;flex:none}
+.head div{min-width:0;display:flex;flex-direction:column}
+.head b{font-size:18px}
+.head small{font-size:14px;line-height:1.35;color:var(--muted)}
+.links{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.store{background:var(--badge);color:var(--badgeText);border-radius:10px;padding:8px 14px;font-size:14px;font-weight:600;text-decoration:none}
+.links .privacy{margin-left:auto;font-size:14px}
+.policies{margin-top:32px;font-size:14px;color:var(--muted)}
+.policies ul{padding-left:20px;margin:6px 0}
 </style>
 </head>
 <body>
 <main>
 <h1>Mustafa Şahin</h1>
-<h2>Blockio: Time Rush</h2>
-<p>Blokları yerleştir, satırları patlat — saate karşı! · Place blocks, blast the lines — against the clock!</p>
+<p class="lead" id="lead">Kısa, sakin bulmaca oyunları · Short, calm puzzle games</p>
+<ul class="games" id="games"></ul>
+<section class="policies">
+<b id="policiesTitle">Gizlilik Politikası / Privacy Policy</b>
 <ul>
-<li><a href="blockio-time-rush/privacy/">Gizlilik Politikası / Privacy Policy</a></li>
+<li><a href="sudoku/privacy/">Sudoku Circles: Daily Race</a></li>
+<li><a href="blockio-time-rush/privacy/">Blockio: Time Rush</a></li>
+<li><a href="daily-drop/privacy/">Daily Drop: Merge Ball Puzzle</a></li>
+<li><a href="tapaway/privacy/">Shoo! Paper Arrow Puzzle</a></li>
+<li><a href="terazi/privacy/">Terazi</a></li>
 </ul>
-<h2>Shoo! Paper Arrow Puzzle</h2>
-<p>Okları doğru sırayla tahtadan kaydır! · Slide the arrows off the board in the right order!</p>
-<ul>
-<li><a href="tapaway/privacy/">Gizlilik Politikası / Privacy Policy / Política de privacidad</a></li>
-</ul>
-<h2>Daily Drop: Merge Ball Puzzle</h2>
-<p>Herkese aynı sıra, tek deneme: günün damlasını bırak! · Same sequence for everyone, one try: drop the day's balls!</p>
-<ul>
-<li><a href="daily-drop/privacy/">Gizlilik Politikası / Privacy Policy</a></li>
-</ul>
-<h2>Sudoku: Time Rush</h2>
-<p>Klasik sudoku, dört zorluk, günlük bulmaca ve saate karşı yarış · Classic sudoku, four difficulties, a daily puzzle and a race against the clock</p>
-<ul>
-<li><a href="sudoku/privacy/">Gizlilik Politikası / Privacy Policy</a></li>
-</ul>
+</section>
 <p>İletişim / Contact: <a href="mailto:mtafasahin@gmail.com">mtafasahin@gmail.com</a></p>
 </main>
+<script>
+(function () {
+  // The games live in this visitor's store, from the catalog the games' "Our other games" read: a phone sees its own
+  // store's games, a computer every live one. A new game is one line in games-catalog.json.
+  var ua = navigator.userAgent || "";
+  var isIos = /iPhone|iPad|iPod/.test(ua) || (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1);
+  var isAndroid = /Android/.test(ua);
+  var lang = (navigator.language || "en").slice(0, 2) === "tr" ? "tr" : "en";
+  var text = {
+    tr: { lead: "Kısa, sakin bulmaca oyunları. Hepsi ücretsiz.", privacy: "Gizlilik", policies: "Gizlilik politikaları" },
+    en: { lead: "Short, calm puzzle games. All free.", privacy: "Privacy", policies: "Privacy policies" }
+  }[lang];
+  var privacy = { sudoku: "sudoku/privacy/", blockio: "blockio-time-rush/privacy/", dailydrop: "daily-drop/privacy/", tapaway: "tapaway/privacy/", terazi: "terazi/privacy/" };
+  document.documentElement.lang = lang;
+  document.getElementById("lead").textContent = text.lead;
+  document.getElementById("policiesTitle").textContent = text.policies;
+  fetch("games-catalog.json").then(function (r) { return r.json(); }).then(function (catalog) {
+    var list = document.getElementById("games");
+    (catalog.games || []).forEach(function (game) {
+      var stores = [];
+      if (game.appStoreId && !isAndroid) { stores.push(["App Store", "https://apps.apple.com/app/id" + game.appStoreId + "?ct=site"]); }
+      if (game.playPackage && !isIos) { stores.push(["Google Play", "https://play.google.com/store/apps/details?id=" + game.playPackage]); }
+      if (!stores.length) { return; }
+      var item = document.createElement("li"); item.className = "game";
+      var head = document.createElement("div"); head.className = "head";
+      var icon = document.createElement("img"); icon.src = game.iconUrl; icon.alt = "";
+      var words = document.createElement("div");
+      var name = document.createElement("b"); name.textContent = (game.name && (game.name[lang] || game.name.en)) || "";
+      var line = document.createElement("small"); line.textContent = (game.tagline && (game.tagline[lang] || game.tagline.en)) || "";
+      words.appendChild(name); words.appendChild(line); head.appendChild(icon); head.appendChild(words);
+      var links = document.createElement("div"); links.className = "links";
+      stores.forEach(function (store) {
+        var badge = document.createElement("a"); badge.className = "store"; badge.textContent = store[0]; badge.href = store[1];
+        links.appendChild(badge);
+      });
+      if (privacy[game.key]) {
+        var policy = document.createElement("a"); policy.className = "privacy"; policy.textContent = text.privacy; policy.href = privacy[game.key];
+        links.appendChild(policy);
+      }
+      item.appendChild(head); item.appendChild(links);
+      list.appendChild(item);
+    });
+  }).catch(function () {});
+})();
+</script>
 </body>
 </html>

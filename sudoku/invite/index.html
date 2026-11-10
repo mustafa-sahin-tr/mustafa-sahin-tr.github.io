@@ -4,13 +4,20 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
+<!-- #222: Safari's own app banner (Open when installed, Get otherwise). -->
+<meta name="apple-itunes-app" content="app-id=6829494366">
 <title>Sudoku Circles — Davet / Invite</title>
 <style>
 :root{--bg:#f4f6fb;--ink:#141a2b;--muted:#5b6478;--card:#ffffff;--line:#dde2ee;--accent:#2f5bd3;--accent-ink:#fff}
 @media (prefers-color-scheme:dark){:root{--bg:#0f1320;--ink:#eef1f8;--muted:#a3acc2;--card:#181e2f;--line:#2b3350;--accent:#ffb020;--accent-ink:#1a1204}}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
-main{max-width:480px;margin:0 auto;padding:40px 16px 64px;text-align:center}
+main{max-width:480px;margin:0 auto;padding:32px 16px 64px;text-align:center}
+.app{display:flex;flex-direction:column;align-items:center;gap:10px;margin-bottom:12px}
+.app img{width:88px;height:88px;border-radius:20px;box-shadow:0 6px 18px rgba(20,26,43,.2)}
+.app span{font-size:13px;font-weight:600;letter-spacing:.06em;color:var(--muted)}
+.name{color:var(--accent)}
+.note{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 16px;margin:16px 0;font-style:italic;color:var(--ink);text-align:left;overflow-wrap:anywhere}
 h1{font-size:26px;margin:0 0 8px}
 p{margin:0 0 16px;color:var(--muted)}
 .card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px 16px;margin:24px 0}
@@ -25,7 +32,9 @@ button{background:var(--accent);color:var(--accent-ink)}
 </head>
 <body>
 <main id="page">
+<div class="app"><img src="/games-catalog-icons/sudoku.png" alt=""><span>SUDOKU CIRCLES: DAILY RACE</span></div>
 <h1 id="title"></h1>
+<div class="note" id="note" hidden></div>
 <p id="lead"></p>
 <div class="card">
 <div id="codeLabel"></div>
@@ -46,12 +55,16 @@ button{background:var(--accent);color:var(--accent-ink)}
           label: "Arkadaş kodu", go: "Kodu kopyala ve oyunu aç", done: "Kod kopyalandı. Oyunda Arkadaşlar'ı açınca hazır gelecek.",
           missing: "Bu davet linkinde kod yok. Arkadaşından kodu yeniden iste.",
           circleTitle: "Çembere davet", circleLead: "Bir arkadaşın seni Sudoku Circles'ta çemberine çağırıyor: her gün aynı bulmaca, yalnız çemberin sıralaması.",
-          circleLabel: "Çember kodu", circleDone: "Kod kopyalandı. Oyunda Çemberler'i açınca katılmak isteyip istemediğin sorulacak." },
+          circleLabel: "Çember kodu", circleDone: "Kod kopyalandı. Oyunda Çemberler'i açınca katılmak isteyip istemediğin sorulacak.",
+          invites: ["", " seni ", " çemberine davet ediyor"], circleLeadNamed: "Her gün herkes aynı bulmacayı çözer; çemberin kendi sıralaması olur.",
+          ios: "App Store'dan indir", android: "Google Play'den indir" },
     en: { title: "Join the Daily Race", lead: "A friend invites you to race the same sudoku every day in Sudoku Circles.",
           label: "Friend code", go: "Copy the code and open the game", done: "Code copied. It will be ready when you open Friends in the game.",
           missing: "This invite link has no code. Ask your friend for the code again.",
           circleTitle: "Join a circle", circleLead: "A friend invites you to their circle in Sudoku Circles: the same puzzle every day, a ranking of your own.",
-          circleLabel: "Circle code", circleDone: "Code copied. Open Circles in the game and you'll be asked to join." }
+          circleLabel: "Circle code", circleDone: "Code copied. Open Circles in the game and you'll be asked to join.",
+          invites: ["", " invites you to the ", " circle"], circleLeadNamed: "Everyone solves the same puzzle every day; the circle has a ranking of its own.",
+          ios: "Get it on the App Store", android: "Get it on Google Play" }
   };
   var lang = (navigator.language || "en").toLowerCase().indexOf("tr") === 0 ? "tr" : "en";
   var t = TEXT[lang];
@@ -71,7 +84,22 @@ button{background:var(--accent);color:var(--accent-ink)}
   if (hasIos) { ios.hidden = false; }
   if (isIos && hasIos) { android.style.display = "none"; }
   if (isAndroid) { ios.style.display = "none"; }
-  document.getElementById("title").textContent = t.title;
+  // #222: "igmo77 invites you to the Family circle" and the circle's message, from the link (plain text only).
+  function field(key, max) { var v = (query.get(key) || "").replace(/\s+/g, " ").trim(); return v.length > max ? v.slice(0, max) + "…" : v; }
+  var circleName = isCircle ? field("n", 32) : "", inviter = isCircle ? field("by", 24) : "", message = isCircle ? field("m", 80) : "";
+  var title = document.getElementById("title");
+  if (circleName && inviter) {
+    var parts = [t.invites[0], inviter, t.invites[1], circleName, t.invites[2]];
+    for (var i = 0; i < parts.length; i++) {
+      var span = document.createElement("span"); span.textContent = parts[i];
+      if (i === 1 || i === 3) { span.className = "name"; }
+      title.appendChild(span);
+    }
+    t.lead = t.circleLeadNamed;
+    document.title = inviter + " · " + circleName + " · Sudoku Circles";
+  } else { title.textContent = t.title; }
+  if (message) { var note = document.getElementById("note"); note.textContent = "“" + message + "”"; note.hidden = false; }
+  android.textContent = t.android; ios.textContent = t.ios;
   document.getElementById("lead").textContent = valid ? t.lead : t.missing;
   document.getElementById("codeLabel").textContent = valid ? t.label : "";
   document.getElementById("code").textContent = code;

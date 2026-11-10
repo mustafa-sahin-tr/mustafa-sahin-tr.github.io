@@ -12,16 +12,17 @@ main{max-width:640px;margin:0 auto;padding:40px 16px}
 h1{margin:0;font-size:30px}
 .lead{margin:0 0 20px;color:var(--muted)}
 a{color:var(--accent)}
-.games{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:14px}
-.game{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px;display:flex;flex-direction:column;gap:12px}
-.head{display:flex;gap:12px;align-items:center}
-.head img{width:64px;height:64px;border-radius:15px;flex:none}
-.head div{min-width:0;display:flex;flex-direction:column}
-.head b{font-size:18px}
-.head small{font-size:14px;line-height:1.35;color:var(--muted)}
-.links{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
-.store{background:var(--badge);color:var(--badgeText);border-radius:10px;padding:8px 14px;font-size:14px;font-weight:600;text-decoration:none}
-.links .privacy{margin-left:auto;font-size:14px}
+.games{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.game{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px;display:flex;flex-direction:column;gap:10px}
+.game img{width:64px;height:64px;border-radius:15px}
+.game b{font-size:17px;line-height:1.25}
+.game small{font-size:14px;line-height:1.35;color:var(--muted);flex:1 1 auto}
+.stores{display:flex;flex-direction:column;gap:6px}
+.store{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:2px 6px;background:var(--badge);color:var(--badgeText);border-radius:10px;padding:7px 12px;font-size:14px;font-weight:600;text-decoration:none}
+.store.soon{background:transparent;color:var(--muted);border:1px dashed var(--line);font-weight:500}
+.store.soon span{font-size:12px}
+.more{font-size:14px;font-weight:600}
+@media (max-width:360px){.games{grid-template-columns:1fr}}
 .policies{margin-top:32px;font-size:14px;color:var(--muted)}
 .policies ul{padding-left:20px;margin:6px 0}
 </style>
@@ -45,44 +46,47 @@ a{color:var(--accent)}
 </main>
 <script>
 (function () {
-  // The games live in this visitor's store, from the catalog the games' "Our other games" read: a phone sees its own
-  // store's games, a computer every live one. A new game is one line in games-catalog.json.
+  // The portfolio from the catalog the games' "Our other games" read: a new game is one line in games-catalog.json.
   var ua = navigator.userAgent || "";
-  var isIos = /iPhone|iPad|iPod/.test(ua) || (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1);
   var isAndroid = /Android/.test(ua);
   var lang = (navigator.language || "en").slice(0, 2) === "tr" ? "tr" : "en";
   var text = {
-    tr: { lead: "Kısa, sakin bulmaca oyunları. Hepsi ücretsiz.", privacy: "Gizlilik", policies: "Gizlilik politikaları" },
-    en: { lead: "Short, calm puzzle games. All free.", privacy: "Privacy", policies: "Privacy policies" }
+    tr: { lead: "Kısa, sakin bulmaca oyunları. Hepsi ücretsiz.", soon: "Yakında", more: "Nasıl oynanır?", policies: "Gizlilik politikaları" },
+    en: { lead: "Short, calm puzzle games. All free.", soon: "Coming soon", more: "How to play", policies: "Privacy policies" }
   }[lang];
-  var privacy = { sudoku: "sudoku/privacy/", blockio: "blockio-time-rush/privacy/", dailydrop: "daily-drop/privacy/", tapaway: "tapaway/privacy/", terazi: "terazi/privacy/" };
+  // Each game's own page: what it is, how to play, support and privacy.
+  var pages = { sudoku: "sudoku/", blockio: "blockio/", dailydrop: "daily-drop/", tapaway: "tapaway/" };
   document.documentElement.lang = lang;
   document.getElementById("lead").textContent = text.lead;
   document.getElementById("policiesTitle").textContent = text.policies;
+  function store(name, url) {
+    var badge = document.createElement(url ? "a" : "span");
+    badge.className = url ? "store" : "store soon";
+    badge.textContent = name;
+    if (url) { badge.href = url; } else {
+      var soon = document.createElement("span"); soon.textContent = text.soon; badge.appendChild(soon);
+      badge.setAttribute("aria-disabled", "true");
+    }
+    return badge;
+  }
+  // Every game of the catalog, live or not: a store it is not in yet shows a quiet "Coming soon" badge. A phone lists
+  // its own store first.
   fetch("games-catalog.json").then(function (r) { return r.json(); }).then(function (catalog) {
     var list = document.getElementById("games");
     (catalog.games || []).forEach(function (game) {
-      var stores = [];
-      if (game.appStoreId && !isAndroid) { stores.push(["App Store", "https://apps.apple.com/app/id" + game.appStoreId + "?ct=site"]); }
-      if (game.playPackage && !isIos) { stores.push(["Google Play", "https://play.google.com/store/apps/details?id=" + game.playPackage]); }
-      if (!stores.length) { return; }
       var item = document.createElement("li"); item.className = "game";
-      var head = document.createElement("div"); head.className = "head";
       var icon = document.createElement("img"); icon.src = game.iconUrl; icon.alt = "";
-      var words = document.createElement("div");
       var name = document.createElement("b"); name.textContent = (game.name && (game.name[lang] || game.name.en)) || "";
       var line = document.createElement("small"); line.textContent = (game.tagline && (game.tagline[lang] || game.tagline.en)) || "";
-      words.appendChild(name); words.appendChild(line); head.appendChild(icon); head.appendChild(words);
-      var links = document.createElement("div"); links.className = "links";
-      stores.forEach(function (store) {
-        var badge = document.createElement("a"); badge.className = "store"; badge.textContent = store[0]; badge.href = store[1];
-        links.appendChild(badge);
-      });
-      if (privacy[game.key]) {
-        var policy = document.createElement("a"); policy.className = "privacy"; policy.textContent = text.privacy; policy.href = privacy[game.key];
-        links.appendChild(policy);
+      var stores = document.createElement("div"); stores.className = "stores";
+      var apple = store("App Store", game.appStoreId ? "https://apps.apple.com/app/id" + game.appStoreId + "?ct=site" : "");
+      var play = store("Google Play", game.playPackage ? "https://play.google.com/store/apps/details?id=" + game.playPackage : "");
+      if (isAndroid) { stores.appendChild(play); stores.appendChild(apple); } else { stores.appendChild(apple); stores.appendChild(play); }
+      item.appendChild(icon); item.appendChild(name); item.appendChild(line); item.appendChild(stores);
+      if (pages[game.key]) {
+        var more = document.createElement("a"); more.className = "more"; more.textContent = text.more; more.href = pages[game.key];
+        item.appendChild(more);
       }
-      item.appendChild(head); item.appendChild(links);
       list.appendChild(item);
     });
   }).catch(function () {});

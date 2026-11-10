@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-10T07:19:47+00:00",
+ "generatedAt": "2026-11-10T09:30:02+00:00",
  "packages": [
   {
    "id": "cozycore",
@@ -228,7 +228,7 @@
    },
    "project": {
     "version": "1.0",
-    "androidCode": "2"
+    "androidCode": "3"
    }
   }
  ]

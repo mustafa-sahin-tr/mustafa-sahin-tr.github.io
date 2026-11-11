@@ -1,0 +1,13 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["38FN3NX7M8.com.mtafasahin.sudokutimerush"],
+        "components": [
+          { "/": "/sudoku/invite", "comment": "Sudoku friend / circle invite" },
+          { "/": "/sudoku/invite/*", "comment": "Sudoku friend / circle invite" }
+        ]
+      }
+    ]
+  }
+}

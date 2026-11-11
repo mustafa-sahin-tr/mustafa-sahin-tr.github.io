@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-11T10:55:45+00:00",
+ "generatedAt": "2026-11-11T13:42:44+00:00",
  "packages": [
   {
    "id": "cozycore",
@@ -178,12 +178,12 @@
    "repo": "sudoku",
    "planned": false,
    "pins": {
-    "cozycore": "0.79.0",
+    "cozycore": "0.80.0",
     "mobileservices": "1.6.0",
     "reactive": "1.1.2"
    },
    "project": {
-    "version": "1.0.0",
+    "version": "1.0.1",
     "androidCode": "1"
    },
    "bundle": "com.mtafasahin.sudokutimerush",
@@ -192,7 +192,7 @@
     "open": null,
     "closed": {
      "version": "android",
-     "code": "267",
+     "code": "288",
      "rollout": null
     },
     "internal": {
@@ -206,11 +206,16 @@
      "version": "1.0.0",
      "date": "2026-11-01"
     },
-    "review": null,
+    "review": {
+     "version": "1.0.1",
+     "state": "WAITING_FOR_REVIEW",
+     "release": "MANUAL",
+     "submitted": "2026-11-11T13:42:10.19Z"
+    },
     "testflight": {
-     "version": "1.0.0",
-     "build": "267",
-     "date": "2026-11-07",
+     "version": "1.0.1",
+     "build": "288",
+     "date": "2026-11-11",
      "expired": false
     }
    }

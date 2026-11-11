@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.mtafasahin.sudokutimerush",
+      "sha256_cert_fingerprints": [
+        "3C:AA:C7:50:51:D6:6F:C7:4D:79:44:4E:A3:F1:1B:F8:BB:9B:61:75:B6:AC:08:D3:CB:AF:EA:61:B7:9F:FB:4C"
+      ]
+    }
+  }
+]

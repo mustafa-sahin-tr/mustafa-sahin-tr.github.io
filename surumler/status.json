@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-11T15:54:16+00:00",
+ "generatedAt": "2026-11-11T18:45:11+00:00",
  "packages": [
   {
    "id": "cozycore",
@@ -67,9 +67,9 @@
     },
     "review": {
      "version": "1.17",
-     "state": "WAITING_FOR_REVIEW",
+     "state": "IN_REVIEW",
      "release": "MANUAL",
-     "submitted": "2026-11-11T08:39:26.144Z"
+     "submitted": null
     },
     "testflight": {
      "version": "1.17",
@@ -238,7 +238,7 @@
    },
    "project": {
     "version": "1.0",
-    "androidCode": "3"
+    "androidCode": "4"
    }
   }
  ]

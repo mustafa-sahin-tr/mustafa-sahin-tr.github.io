@@ -1,10 +1,10 @@
 {
- "generatedAt": "2026-11-11T13:42:44+00:00",
+ "generatedAt": "2026-11-12T03:35:15+00:00",
  "packages": [
   {
    "id": "cozycore",
    "name": "Cozy Core",
-   "latest": "0.80.0"
+   "latest": "0.81.1"
   },
   {
    "id": "mobileservices",
@@ -62,15 +62,10 @@
    },
    "ios": {
     "live": {
-     "version": "1.16",
-     "date": "2026-11-09"
-    },
-    "review": {
      "version": "1.17",
-     "state": "WAITING_FOR_REVIEW",
-     "release": "MANUAL",
-     "submitted": "2026-11-11T08:39:26.144Z"
+     "date": "2026-11-10"
     },
+    "review": null,
     "testflight": {
      "version": "1.17",
      "build": "46",
@@ -178,7 +173,7 @@
    "repo": "sudoku",
    "planned": false,
    "pins": {
-    "cozycore": "0.80.0",
+    "cozycore": "0.81.0",
     "mobileservices": "1.6.0",
     "reactive": "1.1.2"
    },
@@ -192,7 +187,7 @@
     "open": null,
     "closed": {
      "version": "android",
-     "code": "288",
+     "code": "292",
      "rollout": null
     },
     "internal": {
@@ -208,13 +203,13 @@
     },
     "review": {
      "version": "1.0.1",
-     "state": "WAITING_FOR_REVIEW",
+     "state": "PENDING_DEVELOPER_RELEASE",
      "release": "MANUAL",
-     "submitted": "2026-11-11T13:42:10.19Z"
+     "submitted": null
     },
     "testflight": {
      "version": "1.0.1",
-     "build": "288",
+     "build": "292",
      "date": "2026-11-11",
      "expired": false
     }
@@ -231,14 +226,14 @@
    "repo": "MustyTerazi",
    "planned": true,
    "pins": {
-    "cozycore": "0.74.0",
+    "cozycore": "0.81.1",
     "gridpuzzle": "0.5.0",
     "mobileservices": "1.6.0",
     "reactive": "1.1.2"
    },
    "project": {
     "version": "1.0",
-    "androidCode": "3"
+    "androidCode": "4"
    }
   }
  ]

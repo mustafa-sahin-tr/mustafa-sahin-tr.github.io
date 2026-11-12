@@ -1,10 +1,10 @@
 {
- "generatedAt": "2026-11-12T03:35:15+00:00",
+ "generatedAt": "2026-11-12T05:23:57+00:00",
  "packages": [
   {
    "id": "cozycore",
    "name": "Cozy Core",
-   "latest": "0.81.1"
+   "latest": "0.82.0"
   },
   {
    "id": "mobileservices",
@@ -198,15 +198,10 @@
    },
    "ios": {
     "live": {
-     "version": "1.0.0",
-     "date": "2026-11-01"
-    },
-    "review": {
      "version": "1.0.1",
-     "state": "PENDING_DEVELOPER_RELEASE",
-     "release": "MANUAL",
-     "submitted": null
+     "date": "2026-11-11"
     },
+    "review": null,
     "testflight": {
      "version": "1.0.1",
      "build": "292",

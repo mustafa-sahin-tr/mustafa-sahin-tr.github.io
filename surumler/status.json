@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-11T21:11:10+00:00",
+ "generatedAt": "2026-11-12T03:35:15+00:00",
  "packages": [
   {
    "id": "cozycore",
@@ -203,9 +203,9 @@
     },
     "review": {
      "version": "1.0.1",
-     "state": "WAITING_FOR_REVIEW",
+     "state": "PENDING_DEVELOPER_RELEASE",
      "release": "MANUAL",
-     "submitted": "2026-11-11T15:37:05.825Z"
+     "submitted": null
     },
     "testflight": {
      "version": "1.0.1",
@@ -226,7 +226,7 @@
    "repo": "MustyTerazi",
    "planned": true,
    "pins": {
-    "cozycore": "0.74.0",
+    "cozycore": "0.81.1",
     "gridpuzzle": "0.5.0",
     "mobileservices": "1.6.0",
     "reactive": "1.1.2"

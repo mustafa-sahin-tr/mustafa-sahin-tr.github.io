@@ -15,6 +15,7 @@
     { "name": "Sudoku Circles", "repo": "sudoku", "bundle": "com.mtafasahin.sudokutimerush" },
     { "name": "Aile Yapbozu", "repo": "MustyAileYapbozu", "planned": true },
     { "name": "Tilt Blocks: Balance Puzzle", "repo": "MustyTerazi", "planned": true },
-    { "name": "Word Snake: Letter Game", "repo": "MustyWordSnake", "planned": true }
+    { "name": "Word Snake: Letter Game", "repo": "MustyWordSnake", "planned": true },
+    { "name": "Koşu: Word Runner", "repo": "MustyKosu", "planned": true }
   ]
 }

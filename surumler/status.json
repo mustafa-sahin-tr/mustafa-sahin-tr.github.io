@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-12T07:12:29+00:00",
+ "generatedAt": "2026-11-12T19:55:02+00:00",
  "packages": [
   {
    "id": "cozycore",
@@ -228,12 +228,26 @@
    },
    "project": {
     "version": "1.0",
-    "androidCode": "4"
+    "androidCode": "5"
    }
   },
   {
    "name": "Word Snake: Letter Game",
    "repo": "MustyWordSnake",
+   "planned": true,
+   "pins": {
+    "cozycore": "0.82.0",
+    "mobileservices": "1.6.0",
+    "reactive": "1.1.2"
+   },
+   "project": {
+    "version": "1.0",
+    "androidCode": "1"
+   }
+  },
+  {
+   "name": "Koşu: Word Runner",
+   "repo": "MustyKosu",
    "planned": true,
    "pins": {
     "cozycore": "0.82.0",

@@ -49,6 +49,8 @@ button{background:var(--accent);color:var(--accent-ink)}
 // Sudoku Circles (#107): a friend's invite (?c=). The game reads the copied text from the clipboard the first time
 // the player opens Friends (SUDOKU-XXXXXX), so the code survives the store install. #108: a circle's invite (?k=) copies
 // SUDOKU-C-XXXXXX, which the Circles screen reads when it opens and offers to join. Code alphabet: Crockford base32.
+// CozyCore 468: the button also opens the installed game (sudokucircles://invite?c= / ?k=) straight on Friends with the
+// code in the box, or on Circles with "Join?"; without the game it goes on to the store (Android: the intent's fallback).
 (function () {
   var TEXT = {
     tr: { title: "Günün Yarışı'na davet", lead: "Bir arkadaşın seni Sudoku Circles'ta her gün aynı bulmacada yarışmaya çağırıyor.",
@@ -107,6 +109,12 @@ button{background:var(--accent);color:var(--accent-ink)}
   go.textContent = t.go;
   if (!valid) { document.getElementById("page").classList.add("missing"); return; }
   var payload = (isCircle ? "SUDOKU-C-" : "SUDOKU-") + code;
+  var SCHEME = "sudokucircles", PACKAGE = "com.mtafasahin.sudokutimerush";
+  var appPath = "invite?" + (isCircle ? "k=" : "c=") + code;
+  var left = false;
+  function onLeave() { left = true; }
+  document.addEventListener("visibilitychange", function () { if (document.hidden) { onLeave(); } });
+  window.addEventListener("pagehide", onLeave);
   function copyFallback() {
     var area = document.createElement("textarea");
     area.value = payload; area.setAttribute("readonly", ""); area.style.position = "fixed"; area.style.opacity = "0";
@@ -119,6 +127,17 @@ button{background:var(--accent);color:var(--accent-ink)}
     copied.catch(copyFallback).then(function () {
       document.getElementById("done").textContent = t.done;
       var store = isIos ? (hasIos ? ios.href : null) : isAndroid ? android.href : null;
+      if (isAndroid) {
+        location.href = "intent://" + appPath + "#Intent;scheme=" + SCHEME + ";package=" + PACKAGE +
+          ";S.browser_fallback_url=" + encodeURIComponent(android.href) + ";end";
+        return;
+      }
+      if (isIos) {
+        left = false;
+        location.href = SCHEME + "://" + appPath;
+        if (store) { setTimeout(function () { if (!left && !document.hidden) { location.href = store; } }, 1500); }
+        return;
+      }
       if (store) { setTimeout(function () { location.href = store; }, 600); }
     });
   });

@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-13T11:42:10+00:00",
+ "generatedAt": "2026-11-13T23:52:47+00:00",
  "packages": [
   {
    "id": "cozycore",
@@ -178,7 +178,7 @@
     "reactive": "1.1.2"
    },
    "project": {
-    "version": "1.0.1",
+    "version": "1.0.2",
     "androidCode": "1"
    },
    "bundle": "com.mtafasahin.sudokutimerush",
@@ -203,9 +203,9 @@
     },
     "review": null,
     "testflight": {
-     "version": "1.0.1",
-     "build": "292",
-     "date": "2026-11-11",
+     "version": "1.0.2",
+     "build": "303",
+     "date": "2026-11-13",
      "expired": false
     }
    }
@@ -251,6 +251,20 @@
    "planned": true,
    "pins": {
     "cozycore": "0.82.1",
+    "mobileservices": "1.6.0",
+    "reactive": "1.1.2"
+   },
+   "project": {
+    "version": "1.0",
+    "androidCode": "1"
+   }
+  },
+  {
+   "name": "Pim: Pull the Pins, Fill the Cups",
+   "repo": "MustyPim",
+   "planned": true,
+   "pins": {
+    "cozycore": "0.82.0",
     "mobileservices": "1.6.0",
     "reactive": "1.1.2"
    },

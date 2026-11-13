@@ -16,6 +16,7 @@
     { "name": "Aile Yapbozu", "repo": "MustyAileYapbozu", "planned": true },
     { "name": "Tilt Blocks: Balance Puzzle", "repo": "MustyTerazi", "planned": true },
     { "name": "Word Snake: Letter Game", "repo": "MustyWordSnake", "planned": true },
-    { "name": "Koşu: Word Runner", "repo": "MustyKosu", "planned": true }
+    { "name": "Koşu: Word Runner", "repo": "MustyKosu", "planned": true },
+    { "name": "Pim: Pull the Pins, Fill the Cups", "repo": "MustyPim", "planned": true }
   ]
 }

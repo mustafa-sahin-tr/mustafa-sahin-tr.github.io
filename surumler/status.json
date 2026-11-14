@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-14T07:53:34+00:00",
+ "generatedAt": "2026-11-14T08:05:00+00:00",
  "packages": [
   {
    "id": "cozycore",
@@ -219,7 +219,7 @@
   {
    "name": "Tilt Blocks: Balance Puzzle",
    "repo": "MustyTerazi",
-   "planned": true,
+   "planned": false,
    "pins": {
     "cozycore": "0.82.0",
     "gridpuzzle": "0.5.0",
@@ -229,6 +229,34 @@
    "project": {
     "version": "1.0",
     "androidCode": "5"
+   },
+   "bundle": "com.mtafasahin.terazi",
+   "android": {
+    "production": null,
+    "open": null,
+    "closed": {
+     "version": "1.0",
+     "code": "5",
+     "rollout": null
+    },
+    "internal": {
+     "version": "1.0",
+     "code": "5",
+     "rollout": null
+    }
+   },
+   "ios": {
+    "live": {
+     "version": "1.0",
+     "date": "2026-11-05"
+    },
+    "review": null,
+    "testflight": {
+     "version": "1.0",
+     "build": "6",
+     "date": "2026-11-11",
+     "expired": false
+    }
    }
   },
   {

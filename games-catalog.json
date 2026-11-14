@@ -44,6 +44,15 @@
       "iconUrl": "https://mustafa-sahin-tr.github.io/games-catalog-icons/terazi.png",
       "appStoreId": "6831408804",
       "playPackage": ""
+    },
+    {
+      "key": "kosu",
+      "bundleId": "com.mtafasahin.kosu",
+      "name": { "tr": "Harf Koşusu", "en": "Word Runner" },
+      "tagline": { "tr": "Üç şeritte koş, kelimeyi yaz: sıradaki harfin şeridine geç", "en": "Run three lanes and spell the word: pick the lane of its next letter" },
+      "iconUrl": "https://mustafa-sahin-tr.github.io/games-catalog-icons/kosu.png",
+      "appStoreId": "6834078140",
+      "playPackage": ""
     }
   ]
 }

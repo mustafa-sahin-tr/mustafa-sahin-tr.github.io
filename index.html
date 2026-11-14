@@ -8,11 +8,12 @@
 :root{--bg:#fbf7f0;--fg:#2b211c;--muted:#6e5f55;--card:#fff;--line:#eadfd2;--accent:#c2500a;--badge:#2b211c;--badgeText:#fff}
 @media (prefers-color-scheme:dark){:root{--bg:#171310;--fg:#f1e9de;--muted:#b8a999;--card:#221c18;--line:#3a3029;--accent:#f0965a;--badge:#f1e9de;--badgeText:#171310}}
 body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
-main{max-width:640px;margin:0 auto;padding:40px 16px}
+main{max-width:1040px;margin:0 auto;padding:40px 16px}
 h1{margin:0;font-size:30px}
 .lead{margin:0 0 20px;color:var(--muted)}
 a{color:var(--accent)}
-.games{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+/* Four cards a row on a wide screen (230 pt each fits the badges beside the icon), fewer as it narrows, two on a phone. */
+.games{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px}
 .game{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px;display:flex;flex-direction:column;gap:10px}
 .top{display:flex;align-items:center;gap:10px}
 .game img{width:64px;height:64px;border-radius:15px;flex:none}
@@ -24,7 +25,7 @@ a{color:var(--accent)}
 .store svg{width:14px;height:14px;flex:none;fill:currentColor}
 .store.soon{background:transparent;color:var(--muted);border:1px dashed var(--line);font-weight:500}
 .more{font-size:14px;font-weight:600}
-@media (max-width:520px){.store .full{display:none}.store .short{display:inline}}
+@media (max-width:520px){.games{grid-template-columns:repeat(2,minmax(0,1fr))}.store .full{display:none}.store .short{display:inline}}
 @media (max-width:360px){.games{grid-template-columns:1fr}.store .full{display:inline}.store .short{display:none}}
 .policies{margin-top:32px;font-size:14px;color:var(--muted)}
 .policies ul{padding-left:20px;margin:6px 0}

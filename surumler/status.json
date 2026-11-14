@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-14T11:22:57+00:00",
+ "generatedAt": "2026-11-14T12:18:32+00:00",
  "packages": [
   {
    "id": "cozycore",
@@ -204,8 +204,8 @@
     "review": null,
     "testflight": {
      "version": "1.0.2",
-     "build": "307",
-     "date": "2026-11-13",
+     "build": "311",
+     "date": "2026-11-14",
      "expired": false
     }
    }
@@ -284,13 +284,17 @@
    },
    "project": {
     "version": "1.0",
-    "androidCode": "1"
+    "androidCode": "2"
    },
    "bundle": "com.mtafasahin.kosu",
    "android": {
     "production": null,
     "open": null,
-    "closed": null,
+    "closed": {
+     "version": "1.0",
+     "code": "2",
+     "rollout": null
+    },
     "internal": {
      "version": "1.0",
      "code": "2",

@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-14T08:23:45+00:00",
+ "generatedAt": "2026-11-14T08:25:17+00:00",
  "packages": [
   {
    "id": "cozycore",
@@ -276,7 +276,7 @@
   {
    "name": "Koşu: Word Runner",
    "repo": "MustyKosu",
-   "planned": true,
+   "planned": false,
    "pins": {
     "cozycore": "0.82.1",
     "mobileservices": "1.6.0",
@@ -285,6 +285,26 @@
    "project": {
     "version": "1.0",
     "androidCode": "1"
+   },
+   "bundle": "com.mtafasahin.kosu",
+   "android": {
+    "production": null,
+    "open": null,
+    "closed": null,
+    "internal": null
+   },
+   "ios": {
+    "live": {
+     "version": "1.0",
+     "date": "2026-11-12"
+    },
+    "review": null,
+    "testflight": {
+     "version": "1.0",
+     "build": "7",
+     "date": "2026-11-13",
+     "expired": false
+    }
    }
   },
   {

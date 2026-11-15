@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-15T20:20:00+00:00",
+ "generatedAt": "2026-11-15T20:34:19+00:00",
  "packages": [
   {
    "id": "cozycore",
@@ -187,7 +187,7 @@
     "open": null,
     "closed": {
      "version": "android",
-     "code": "311",
+     "code": "327",
      "rollout": null
     },
     "internal": {

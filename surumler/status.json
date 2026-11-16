@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-16T06:31:28+00:00",
+ "generatedAt": "2026-11-16T20:08:48+00:00",
  "packages": [
   {
    "id": "cozycore",
@@ -153,13 +153,11 @@
     }
    },
    "ios": {
-    "live": null,
-    "review": {
+    "live": {
      "version": "1.0",
-     "state": "WAITING_FOR_REVIEW",
-     "release": "MANUAL",
-     "submitted": "2026-11-05T20:48:03.496Z"
+     "date": "2026-10-07"
     },
+    "review": null,
     "testflight": {
      "version": "1.0",
      "build": "22",
@@ -198,15 +196,10 @@
    },
    "ios": {
     "live": {
-     "version": "1.0.2",
-     "date": "2026-11-14"
-    },
-    "review": {
      "version": "1.0.3",
-     "state": "WAITING_FOR_REVIEW",
-     "release": "MANUAL",
-     "submitted": "2026-11-15T20:19:25.658Z"
+     "date": "2026-11-15"
     },
+    "review": null,
     "testflight": {
      "version": "1.0.3",
      "build": "327",
@@ -313,7 +306,7 @@
     },
     "review": {
      "version": "1.1",
-     "state": "WAITING_FOR_REVIEW",
+     "state": "IN_REVIEW",
      "release": "AFTER_APPROVAL",
      "submitted": "2026-11-15T18:42:01.171Z"
     },

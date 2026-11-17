@@ -18,6 +18,6 @@
     { "name": "Word Snake: Letter Game", "repo": "MustyWordSnake", "planned": true },
     { "name": "Koşu: Word Runner", "repo": "MustyKosu", "bundle": "com.mtafasahin.kosu" },
     { "name": "Pim: Pull the Pins, Fill the Cups", "repo": "MustyPim", "planned": true },
-    { "name": "Hatıra: Memory Games", "repo": "MustyTakvim", "planned": true }
+    { "name": "Takvim: Daily Memory Games", "repo": "MustyTakvim", "planned": true }
   ]
 }

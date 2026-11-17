@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-16T20:08:48+00:00",
+ "generatedAt": "2026-11-17T07:55:57+00:00",
  "packages": [
   {
    "id": "cozycore",
@@ -324,6 +324,20 @@
    "planned": true,
    "pins": {
     "cozycore": "0.84.0",
+    "mobileservices": "1.6.0",
+    "reactive": "1.1.2"
+   },
+   "project": {
+    "version": "1.0",
+    "androidCode": "1"
+   }
+  },
+  {
+   "name": "Takvim: Daily Memory Games",
+   "repo": "MustyTakvim",
+   "planned": true,
+   "pins": {
+    "cozycore": "0.82.0",
     "mobileservices": "1.6.0",
     "reactive": "1.1.2"
    },

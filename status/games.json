@@ -17,7 +17,7 @@
     { "name": "Tilt Blocks: Balance Puzzle", "repo": "MustyTerazi", "bundle": "com.mtafasahin.terazi" },
     { "name": "Word Snake: Letter Game", "repo": "MustyWordSnake", "planned": true },
     { "name": "Koşu: Word Runner", "repo": "MustyKosu", "bundle": "com.mtafasahin.kosu" },
-    { "name": "Pim: Pull the Pins, Fill the Cups", "repo": "MustyPim", "planned": true },
+    { "name": "Pim: Pull the Pin Puzzle", "repo": "MustyPim", "bundle": "com.mtafasahin.pim" },
     { "name": "Takvim: Daily Memory Games", "repo": "MustyTakvim", "planned": true },
     { "name": "Piksel: Yarn Belt Puzzle", "repo": "MustyPiksel", "planned": true }
   ]

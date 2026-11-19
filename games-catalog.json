@@ -53,6 +53,15 @@
       "iconUrl": "https://mustafa-sahin-tr.github.io/games-catalog-icons/kosu.png",
       "appStoreId": "6834078140",
       "playPackage": ""
+    },
+    {
+      "key": "pim",
+      "bundleId": "com.mtafasahin.pim",
+      "name": { "tr": "Pim", "en": "Pim" },
+      "tagline": { "tr": "Pimi çek, bilyeyi kendi renginin kabına düşür", "en": "Pull the pins and drop each ball into its own colour cup" },
+      "iconUrl": "https://mustafa-sahin-tr.github.io/games-catalog-icons/pim.png",
+      "appStoreId": "6834681200",
+      "playPackage": ""
     }
   ]
 }

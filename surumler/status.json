@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-19T07:03:50+00:00",
+ "generatedAt": "2026-11-19T07:23:49+00:00",
  "packages": [
   {
    "id": "cozycore",
@@ -199,7 +199,12 @@
      "version": "1.0.3",
      "date": "2026-11-15"
     },
-    "review": null,
+    "review": {
+     "version": "1.0.4",
+     "state": "WAITING_FOR_REVIEW",
+     "release": "MANUAL",
+     "submitted": "2026-11-19T07:23:12.592Z"
+    },
     "testflight": {
      "version": "1.0.4",
      "build": "337",
@@ -330,6 +335,20 @@
   {
    "name": "Takvim: Daily Memory Games",
    "repo": "MustyTakvim",
+   "planned": true,
+   "pins": {
+    "cozycore": "0.82.0",
+    "mobileservices": "1.6.0",
+    "reactive": "1.1.2"
+   },
+   "project": {
+    "version": "1.0",
+    "androidCode": "1"
+   }
+  },
+  {
+   "name": "Piksel: Yarn Belt Puzzle",
+   "repo": "MustyPiksel",
    "planned": true,
    "pins": {
     "cozycore": "0.82.0",

@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-19T19:49:02+00:00",
+ "generatedAt": "2026-11-19T22:52:42+00:00",
  "packages": [
   {
    "id": "cozycore",
@@ -366,7 +366,7 @@
    }
   },
   {
-   "name": "Piksel: Yarn Belt Puzzle",
+   "name": "Stitch Hoop: Yarn Unravel",
    "repo": "MustyPiksel",
    "planned": true,
    "pins": {

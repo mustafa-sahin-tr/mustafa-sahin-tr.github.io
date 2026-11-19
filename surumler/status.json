@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-17T20:56:46+00:00",
+ "generatedAt": "2026-11-19T07:03:50+00:00",
  "packages": [
   {
    "id": "cozycore",
@@ -176,7 +176,7 @@
     "reactive": "1.1.2"
    },
    "project": {
-    "version": "1.0.3",
+    "version": "1.0.4",
     "androidCode": "1"
    },
    "bundle": "com.mtafasahin.sudokutimerush",
@@ -185,7 +185,7 @@
     "open": null,
     "closed": {
      "version": "android",
-     "code": "327",
+     "code": "337",
      "rollout": null
     },
     "internal": {
@@ -201,9 +201,9 @@
     },
     "review": null,
     "testflight": {
-     "version": "1.0.3",
-     "build": "327",
-     "date": "2026-11-15",
+     "version": "1.0.4",
+     "build": "337",
+     "date": "2026-11-18",
      "expired": false
     }
    }

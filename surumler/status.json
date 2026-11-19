@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-19T07:23:49+00:00",
+ "generatedAt": "2026-11-19T13:55:44+00:00",
  "packages": [
   {
    "id": "cozycore",
@@ -319,9 +319,9 @@
    }
   },
   {
-   "name": "Pim: Pull the Pins, Fill the Cups",
+   "name": "Pim: Pull the Pin Puzzle",
    "repo": "MustyPim",
-   "planned": true,
+   "planned": false,
    "pins": {
     "cozycore": "0.84.0",
     "mobileservices": "1.6.0",
@@ -330,6 +330,30 @@
    "project": {
     "version": "1.0",
     "androidCode": "1"
+   },
+   "bundle": "com.mtafasahin.pim",
+   "android": {
+    "production": null,
+    "open": null,
+    "closed": {
+     "version": "1.0",
+     "code": "1",
+     "rollout": null
+    },
+    "internal": null
+   },
+   "ios": {
+    "live": {
+     "version": "1.0",
+     "date": "2026-11-13"
+    },
+    "review": null,
+    "testflight": {
+     "version": "1.0",
+     "build": "1",
+     "date": "2026-11-18",
+     "expired": false
+    }
    }
   },
   {

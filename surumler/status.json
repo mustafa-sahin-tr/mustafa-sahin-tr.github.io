@@ -1,10 +1,10 @@
 {
- "generatedAt": "2026-11-19T22:52:42+00:00",
+ "generatedAt": "2026-11-20T07:17:48+00:00",
  "packages": [
   {
    "id": "cozycore",
    "name": "Cozy Core",
-   "latest": "0.84.0"
+   "latest": "0.85.0"
   },
   {
    "id": "mobileservices",
@@ -370,7 +370,7 @@
    "repo": "MustyPiksel",
    "planned": true,
    "pins": {
-    "cozycore": "0.82.0",
+    "cozycore": "0.85.0",
     "mobileservices": "1.6.0",
     "reactive": "1.1.2"
    },

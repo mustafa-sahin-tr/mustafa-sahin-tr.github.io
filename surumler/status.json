@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-22T11:12:14+00:00",
+ "generatedAt": "2026-11-22T13:57:26+00:00",
  "packages": [
   {
    "id": "cozycore",
@@ -134,8 +134,8 @@
     "reactive": "1.1.2"
    },
    "project": {
-    "version": "1.0",
-    "androidCode": "12"
+    "version": "1.1",
+    "androidCode": "13"
    },
    "bundle": "com.mtafasahin.tapaway",
    "android": {
@@ -154,15 +154,10 @@
    },
    "ios": {
     "live": {
-     "version": "1.0",
-     "date": "2026-10-07"
-    },
-    "review": {
      "version": "1.1",
-     "state": "PENDING_DEVELOPER_RELEASE",
-     "release": "MANUAL",
-     "submitted": null
+     "date": "2026-11-21"
     },
+    "review": null,
     "testflight": {
      "version": "1.1",
      "build": "24",

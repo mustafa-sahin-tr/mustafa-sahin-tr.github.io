@@ -19,6 +19,7 @@
     { "name": "Koşu: Word Runner", "repo": "MustyKosu", "bundle": "com.mtafasahin.kosu" },
     { "name": "Pim: Pull the Pin Puzzle", "repo": "MustyPim", "bundle": "com.mtafasahin.pim" },
     { "name": "Takvim: Daily Memory Games", "repo": "MustyTakvim", "planned": true },
-    { "name": "Stitch Hoop: Yarn Unravel", "repo": "MustyPiksel", "planned": true }
+    { "name": "Stitch Hoop: Yarn Unravel", "repo": "MustyPiksel", "planned": true },
+    { "name": "Cıvata: Screw Sort Puzzle", "repo": "MustyCivata", "planned": true }
   ]
 }

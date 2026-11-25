@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-25T21:42:57+00:00",
+ "generatedAt": "2026-11-25T22:21:27+00:00",
  "packages": [
   {
    "id": "cozycore",
@@ -183,7 +183,7 @@
    "android": {
     "production": {
      "version": "android",
-     "code": "337",
+     "code": "407",
      "rollout": null
     },
     "open": null,
@@ -203,10 +203,15 @@
      "version": "1.0.4",
      "date": "2026-11-18"
     },
-    "review": null,
+    "review": {
+     "version": "1.1.0",
+     "state": "WAITING_FOR_REVIEW",
+     "release": "AFTER_APPROVAL",
+     "submitted": "2026-11-25T22:07:02.787Z"
+    },
     "testflight": {
      "version": "1.1.0",
-     "build": "392",
+     "build": "407",
      "date": "2026-11-25",
      "expired": false
     }

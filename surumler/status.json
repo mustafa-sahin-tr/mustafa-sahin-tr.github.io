@@ -1,10 +1,10 @@
 {
- "generatedAt": "2026-11-24T16:18:25+00:00",
+ "generatedAt": "2026-11-25T05:34:36+00:00",
  "packages": [
   {
    "id": "cozycore",
    "name": "Cozy Core",
-   "latest": "0.86.0"
+   "latest": "0.87.0"
   },
   {
    "id": "mobileservices",
@@ -33,13 +33,13 @@
    "repo": "MustyBlockBlast",
    "planned": false,
    "pins": {
-    "cozycore": "0.56.1",
+    "cozycore": "0.87.0",
     "mobileservices": "1.6.0",
     "reactive": "1.1.2"
    },
    "project": {
     "version": "1.18",
-    "androidCode": "45"
+    "androidCode": "46"
    },
    "bundle": "com.mtafasahin.blockiotimerush",
    "android": {
@@ -51,12 +51,12 @@
     "open": null,
     "closed": {
      "version": "1.18",
-     "code": "45",
+     "code": "46",
      "rollout": null
     },
     "internal": {
      "version": "1.18",
-     "code": "45",
+     "code": "46",
      "rollout": null
     }
    },
@@ -68,8 +68,8 @@
     "review": null,
     "testflight": {
      "version": "1.18",
-     "build": "47",
-     "date": "2026-11-23",
+     "build": "49",
+     "date": "2026-11-24",
      "expired": false
     }
    }

@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-27T06:02:44+00:00",
+ "generatedAt": "2026-11-27T07:56:55+00:00",
  "packages": [
   {
    "id": "cozycore",
@@ -51,12 +51,12 @@
     "open": null,
     "closed": {
      "version": "1.18",
-     "code": "48",
+     "code": "49",
      "rollout": null
     },
     "internal": {
      "version": "1.18",
-     "code": "48",
+     "code": "49",
      "rollout": null
     }
    },
@@ -68,7 +68,7 @@
     "review": null,
     "testflight": {
      "version": "1.18",
-     "build": "54",
+     "build": "55",
      "date": "2026-11-26",
      "expired": false
     }

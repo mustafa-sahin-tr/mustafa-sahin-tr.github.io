@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-27T03:53:41+00:00",
+ "generatedAt": "2026-11-27T06:02:44+00:00",
  "packages": [
   {
    "id": "cozycore",
@@ -39,7 +39,7 @@
    },
    "project": {
     "version": "1.18",
-    "androidCode": "46"
+    "androidCode": "48"
    },
    "bundle": "com.mtafasahin.blockiotimerush",
    "android": {
@@ -68,7 +68,7 @@
     "review": null,
     "testflight": {
      "version": "1.18",
-     "build": "53",
+     "build": "54",
      "date": "2026-11-26",
      "expired": false
     }
@@ -183,7 +183,7 @@
    "android": {
     "production": {
      "version": "android",
-     "code": "407",
+     "code": "413",
      "rollout": null
     },
     "open": null,
@@ -203,7 +203,12 @@
      "version": "1.1.0",
      "date": "2026-11-25"
     },
-    "review": null,
+    "review": {
+     "version": "1.1.1",
+     "state": "WAITING_FOR_REVIEW",
+     "release": "AFTER_APPROVAL",
+     "submitted": "2026-11-27T06:01:04.556Z"
+    },
     "testflight": {
      "version": "1.1.1",
      "build": "413",

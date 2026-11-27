@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-27T21:17:55+00:00",
+ "generatedAt": "2026-11-27T22:55:33+00:00",
  "packages": [
   {
    "id": "cozycore",
@@ -391,6 +391,20 @@
   {
    "name": "Cıvata: Screw Sort Puzzle",
    "repo": "MustyCivata",
+   "planned": true,
+   "pins": {
+    "cozycore": "0.82.0",
+    "mobileservices": "1.6.0",
+    "reactive": "1.1.2"
+   },
+   "project": {
+    "version": "1.0",
+    "androidCode": "1"
+   }
+  },
+  {
+   "name": "Deste: Word Solitaire",
+   "repo": "MustyDeste",
    "planned": true,
    "pins": {
     "cozycore": "0.82.0",
